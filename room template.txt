@@ -1,0 +1,10 @@
+ROOM NAME
+PREV ROOM NAME
+NEXT ROOM NAME
+item1 name
+item2 name
+item3 name
+state1 description
+state2 description
+state3 description
+

@@ -1,0 +1,2 @@
+To use the roomTemplate.txt enter all data as strings followed by end line characters.  The game engine will read data from
+the template to create the room data structures.  If there isn't a description or item to fill a line, then leave the line blank.
