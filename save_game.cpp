@@ -13,9 +13,13 @@
 #include <dirent.h>
 #include <time.h>
 #include <fstream>
-#include <locale.h>
 
-
+/*
+    Writes the date and time then each element in the data array all
+    separated by a 'n'.
+    Args - data of strings to be written to a file, size of the data array,
+           name of the file, current date and time to written
+*/
 void write_to_file(std::string data[], int size, std::string fname, std::string dt) {
     std::ofstream afile;
     int i;
@@ -31,6 +35,10 @@ void write_to_file(std::string data[], int size, std::string fname, std::string 
     afile.close();
 }
 
+/*
+    Returns true if file exists, false otherwise
+    Arg - file name to search for
+*/
 bool file_present(std::string fname) {
     DIR *sgdir;
     struct dirent *sdirent;
@@ -58,6 +66,11 @@ bool file_present(std::string fname) {
     return false;
 }
 
+/*
+    Displays a menu of saved files and opening if there are none.
+    Will allow up to 3 separate files to be saved. User selects
+    1-3 to save a file and returns that choice.
+*/
 int save_menu() {
     std::string user_input;
     char n = '\0';
@@ -239,6 +252,10 @@ int save_menu() {
     return -1;
 }
 
+/*
+    Saves an array of data to a text file.
+    Args - array of data, size of array
+*/
 void save_data(std::string data [], int size) {
     int filen = save_menu();
     time_t rawtime;
