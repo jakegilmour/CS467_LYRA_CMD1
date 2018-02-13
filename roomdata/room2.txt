@@ -1,7 +1,7 @@
-Treasure Room
-treasure sack
-
-
+Guard Room
+guard duty roster
+ 
+ 
 state1 description
 state2 description
 state3 description

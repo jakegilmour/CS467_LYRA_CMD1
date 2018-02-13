@@ -1,7 +1,7 @@
-Pantry
-main door
-bag of flour
-
+Treasure Room
+treasure sack
+ 
+ 
 state1 description
 state2 description
 state3 description

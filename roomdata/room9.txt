@@ -1,7 +1,7 @@
-Kitchen
-cook book
-fruit basket
-
+Pantry
+main door
+bag of flour
+ 
 state1 description
 state2 description
 state3 description
