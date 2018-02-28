@@ -183,6 +183,20 @@ int load_menu() {
                 n = user_input[0];
             }
             
+            // ensure file exists to load
+            if (n == '1' and !sg1_present) {
+                printf("That file doesn't exist. Please try again.\n");
+                continue;
+            }
+            else if (n == '2' and !sg2_present) {
+                printf("That file doesn't exist. Please try again.\n");
+                continue;
+            }
+            else if (n == '3' and !sg3_present) {
+                printf("That file doesn't exist. Please try again.\n");
+                continue;
+            }
+            
             // calculate using ascii to get int
             if (n > 48 && n < 52) {
                 result = n - '0';
@@ -238,13 +252,13 @@ std::vector<std::string> load_data() {
     return mydata;
 }
 
-//int main(int argc, const char * argv[]) {
-//    int i;
-//    std::vector<std::string> data = load_data();
-//    
-//    for(i = 0; i < data.size(); ++i)
-//        std::cout << data[i] << '\n';
-//
-//    return 0;
-//}
+int main(int argc, const char * argv[]) {
+    int i;
+    std::vector<std::string> data = load_data();
+    
+    for(i = 0; i < data.size(); ++i)
+        std::cout << data[i] << '\n';
+
+    return 0;
+}
 
