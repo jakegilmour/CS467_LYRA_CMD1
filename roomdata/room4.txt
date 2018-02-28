@@ -1,7 +1,4 @@
-Throne Room
-
-
-
+Place of Arms
 state1 description
 state2 description
 state3 description

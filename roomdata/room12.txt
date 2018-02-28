@@ -1,7 +1,4 @@
-Chapel Room
-Holy Book
-
-
+Master Bed Chamber
 state1 description
 state2 description
 state3 description

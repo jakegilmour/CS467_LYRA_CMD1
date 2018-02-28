@@ -1,7 +1,4 @@
-Kitchen
-cook book
-fruit basket
-
+Pantry
 state1 description
 state2 description
 state3 description

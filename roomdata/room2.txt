@@ -1,7 +1,4 @@
-Treasure Room
-treasure sack
-
-
+Guard Room
 state1 description
 state2 description
 state3 description

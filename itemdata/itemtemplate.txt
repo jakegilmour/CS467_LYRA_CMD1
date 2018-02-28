@@ -1,0 +1,6 @@
+string itemname
+string itemdescription
+int usedinroomnum
+int cantakeornot
+int roomnum
+string command

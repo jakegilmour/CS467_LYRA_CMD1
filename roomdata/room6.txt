@@ -1,7 +1,4 @@
-Master Bed Chamber
-lamp
-
-
+Solar Room
 state1 description
 state2 description
 state3 description

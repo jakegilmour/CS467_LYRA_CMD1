@@ -1,7 +1,4 @@
-Place of Arms
-sword
-bow
-arrows
+Throne Room
 state1 description
 state2 description
 state3 description
