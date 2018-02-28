@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "textparse.h"
+#include "textparse.hpp"
 
 /*
  Textparse helper function finds a matching string in vector that is also in the array
