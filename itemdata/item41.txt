@@ -1,0 +1,9 @@
+41
+guard
+A guard is on duty.  They take turns patrolling the castle.  You won't be able to sneak past him.  Your best bet may be close quarters combat.
+5
+0
+5
+
+
+

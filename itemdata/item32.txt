@@ -1,0 +1,8 @@
+32
+treasure chest
+The chest is locked.  You try to pick it up but it is way too heavy to lift.  If you could take this chest you would be very rich.  Unforunately, it is too heavy to carry.
+10
+0
+10
+
+

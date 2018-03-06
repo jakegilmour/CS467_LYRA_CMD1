@@ -1,0 +1,8 @@
+40
+sleeping guard
+The guard is sound asleep.  You notice some keys on his belt.  Better not wake him up.
+0
+0
+0
+
+

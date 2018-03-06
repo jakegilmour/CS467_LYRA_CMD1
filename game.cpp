@@ -3,9 +3,10 @@
 #include <vector>
 #include "game.h"
 #include <fstream>
+#include "textparse.hpp"
 
 #define NUMROOMS 15
-#define NUMITEMS 35
+#define NUMITEMS 48
 
 
 
@@ -18,6 +19,9 @@ int main()
 	vector <struct room> rooms(NUMROOMS);
 	initializeRooms(rooms);
 	importItemData(rooms);
+	
+	playGame(rooms, playerInventory);
+	
 	
 	
 	for (int i = 0; i < NUMROOMS; i++)
@@ -37,7 +41,7 @@ int main()
 	
 
 	
-	string window = "window";
+	string window = "dungeon key";
 	int test1 = itemIsInRoom(window, rooms, 0);
 	int test2 = itemIsInRoom("window1", rooms, 0);
 	
@@ -45,7 +49,7 @@ int main()
 	
 	cout << endl;
 	cout << "***** Testing itemIsInRoom ******" << endl;
-	cout << "Expected value for first test = 1.  Actual = " << test1 << endl;
+	cout << "Expected value for first test = 0.  Actual = " << test1 << endl;
 	cout << "Expected value for second test = -1.  Actual = " << test2 << endl;
 	
 	
@@ -70,11 +74,21 @@ int main()
 	inspectItem(window, rooms, playerInventory, 4);
 	cout << endl;
 	
+	takeItem("dungeon key", playerInventory, rooms, 0);
+	test1 = itemIsInRoom(window, rooms, 0);
+	cout << "Expected value for second test = -1.  Actual = " << test1 << endl;
 	
+	cout << " item 1 in inv " << playerInventory.items[1].name << endl;
 	
+	dropItem("dungeon key", playerInventory, rooms, 0);
+	test1 = itemIsInRoom(window, rooms, 0);
+	cout << rooms[0].items[0].name << endl;
+	cout << " item 1 in inv " << playerInventory.items[1].name << endl;
+	cout << "Expected value for first test = 0.  Actual = " << test1 << endl;
 	
 	
 
+	return 0;
 	return 0;
 }
 
@@ -96,13 +110,13 @@ void inspectItem(string itemName, vector <struct room> &rooms, struct inventory 
 	if (itemInInv >= 0)
 	{
 		
-		cout << " item found  in inv" << playerInventory.items[itemInInv].description << endl;
+		cout << playerInventory.items[itemInInv].description << endl;
 		
 	}
 	else if (isInRoom >= 0)
 	{
 
-		cout << " item found in room" << rooms[currentRoomNum].items[isInRoom].description << endl;
+		cout << rooms[currentRoomNum].items[isInRoom].description << endl;
 		
 	}
 	else
@@ -185,8 +199,8 @@ int dropItem(string itemName, struct inventory &playerInventory, vector <struct 
 	}
 	else
 	{
-		
-		rooms[currentRoomNum].items.push_back(playerInventory.items[itemInInv]);
+		cout << "You successfully dropped " << itemName << ".  It is now in the " << rooms[currentRoomNum].name << endl;
+		rooms[currentRoomNum].items[rooms[currentRoomNum].numItems] = playerInventory.items[itemInInv];
 		rooms[currentRoomNum].numItems += 1;
 		playerInventory.items.erase( playerInventory.items.begin() + itemInInv);
 		playerInventory.numItems -= 1;
@@ -232,6 +246,7 @@ int takeItem(string itemName, struct inventory &playerInventory, vector <struct 
 	}
 	else
 	{
+		cout << "You successfully grabbed " << itemName << ".  It is now in your inventory" << endl;
 		playerInventory.items[playerInventory.numItems] = rooms[currentRoomNum].items[isInRoom];
 		playerInventory.numItems += 1;
 		rooms[currentRoomNum].items.erase(rooms[currentRoomNum].items.begin() + isInRoom);
@@ -253,34 +268,76 @@ int useItem(string itemName, struct inventory &playerInventory, vector <struct r
 {
 	
 
-	int isInRoom = itemIsInRoom(itemName, rooms, currentRoomNum);
+	
 	int itemInInv = hasItem(itemName, playerInventory);
+
 	
-	
-	if (isInRoom >= 0)
+	if (itemInInv >= 0)
 	{
-		if (rooms[currentRoomNum].items[isInRoom].usedInRoom == currentRoomNum)
+		
+		if (playerInventory.items[itemInInv].usedInRoom == 40)
 		{
-			cout << "item succesfully used" << endl;
-			rooms[currentRoomNum].roomState == 1;
-			return 1;
+			//Castle Map
+			if (currentRoomNum < 14)
+			{
+				cout << playerInventory.items[itemInInv].useText1 << rooms[currentRoomNum + 1].name << endl;
+				rooms[currentRoomNum].roomState = 2;
+				return 1;
+			}
+			else
+			{
+				cout << playerInventory.items[itemInInv].useText2 << endl;
+				return 0;
+			}
 			
 		}
-		else
+		else if (playerInventory.items[itemInInv].usedInRoom == 50)
 		{
-			cout << "You can't use that here" << endl;
-			return 0;
+			//sword
+			if (currentRoomNum == 5 || currentRoomNum == 6 || currentRoomNum == 9)
+			{
+				cout << playerInventory.items[itemInInv].useText1 << endl;
+				rooms[currentRoomNum].roomState = 2;
+				return 1;
+			}
+			else
+			{
+				cout << "Using that here doesn't seem wise" << endl;
+				return 0;
+			}
 			
 		}
-	}
-	else if (itemInInv >= 0)
-	{
-		if (playerInventory.items[itemInInv].usedInRoom == currentRoomNum)
+		else if (playerInventory.items[itemInInv].usedInRoom == 60)
 		{
-			cout << "item succesfully used" << endl;
-			rooms[currentRoomNum].roomState == 1;
-			return 1;
+			//bow and arrow
+			if (currentRoomNum == 8 || currentRoomNum == 10 || currentRoomNum == 13)
+			{
+				cout << playerInventory.items[itemInInv].useText1 << endl;
+				rooms[currentRoomNum].roomState = 2;
+				return 1;
+			}
+			else if (currentRoomNum == 14)
+			{
+				
+				cout << playerInventory.items[itemInInv].useText2 << endl;
+				rooms[currentRoomNum].roomState = 2;
+				return 1;
+				
+			}
+			else
+			{
+				cout << "Using that here doesn't seem wise" << endl;
+				return 0;
+			}
 			
+		}
+		else if (playerInventory.items[itemInInv].usedInRoom == currentRoomNum)
+		{
+			
+				cout << playerInventory.items[itemInInv].useText1 << endl;
+				rooms[currentRoomNum].roomState = 2;
+				return 1;
+
 		}
 		else
 		{
@@ -292,7 +349,8 @@ int useItem(string itemName, struct inventory &playerInventory, vector <struct r
 	}
 	else
 	{
-		cout << "The item you are trying to use is not in the room or in your inventory" << endl;		
+		cout << "The item you are trying to use is not in your inventory" << endl;		
+		return 0;
 	}
 	
 	
@@ -349,6 +407,32 @@ void importRoomData(vector <struct room> &rooms, int roomNum)
 				rooms[roomNum].description3 = fileLine;
 				rooms[roomNum].description3.erase(rooms[roomNum].description3.length() - 1);
 			}
+			else if (lineCounter == 5)
+			{
+				fileLine.erase(fileLine.length() - 1);
+				rooms[roomNum].prevRoom = stoi(fileLine);
+			}
+			else if (lineCounter == 6)
+			{
+				fileLine.erase(fileLine.length() - 1);
+				rooms[roomNum].nextRoom = stoi(fileLine);
+			}
+			else if (lineCounter == 7)
+			{
+				fileLine.erase(fileLine.length() - 1);
+				rooms[roomNum].door = stoi(fileLine);
+				
+			}
+			else if (lineCounter == 8)
+			{
+				rooms[roomNum].nextDoor = fileLine;
+				rooms[roomNum].nextDoor.erase(rooms[roomNum].nextDoor.length() - 1);
+			}
+			else if (lineCounter == 8)
+			{
+				rooms[roomNum].prevDoor = fileLine;
+				rooms[roomNum].prevDoor.erase(rooms[roomNum].prevDoor.length() - 1);
+			}
 			
 			lineCounter++;
 			
@@ -371,15 +455,16 @@ Returns: 1 if the player successfully goes to the next room, 0 if they do not
 int goToNextRoom(vector <struct room> &visitedRooms, int &currentRoomNum)
 {
 	
-	if (visitedRooms[currentRoomNum].roomState = 0)
+	if (visitedRooms[currentRoomNum].roomState == 0 || visitedRooms[currentRoomNum].roomState == 1)
 	{
 		cout << "Hmmm, you aren't able to go there yet.  Maybe there is something that you must do first..." << endl;
 		return 0;				
 	}	
 	else
 	{
-		visitedRooms[currentRoomNum].roomState = 2;
 		currentRoomNum++;
+		printRoomDescription(visitedRooms, currentRoomNum);
+		visitedRooms[currentRoomNum].roomState = 1;
 		return 1;
 		
 	}
@@ -446,13 +531,13 @@ void printRoomDescription(vector <struct room> &rooms, int currentRoomNum)
 	
 	switch (rooms[currentRoomNum].roomState)
 	{
-		case 1: 
+		case 0: 
 			cout << rooms[currentRoomNum].description1 << endl;
 			break;
-		case 2: 
+		case 1: 
 			cout << rooms[currentRoomNum].description2 << endl;
 			break;
-		case 3: 
+		case 2: 
 			cout << rooms[currentRoomNum].description3 << endl;
 			break;
 
@@ -491,11 +576,28 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 {
 	
 	int currentRoomNum = 0;
-	vector <string> commands;
+	//vector <string> commands[3];
+	string userInput;
+	string commands[3];
+	
+	printRoomDescription(rooms, currentRoomNum);
+	
+	rooms[0].roomState = 1;
 	
 	while(1){
-		commands = textParse();
+		//cin >> userInput;
+		//commands =textParse(userInput);
+		
+		string input1;
+		string input2;
+		getline(cin, input1);
+		getline(cin, input2);
+		commands[0] = input1;
+		commands[1] = input2;
+		input1.erase(input1.length() - 1);
+		input2.erase(input2.length() - 1);
 
+		
 			
 		if (commands[0] == "look")
 		{
@@ -509,14 +611,139 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 		}
 		else if (commands[0] == "go")
 		{
-			if (commands[1] == "next")
-			{
-				goToNextRoom(rooms, currentRoomNum);
+
+			if (rooms[currentRoomNum].door == 1){				
+				if (commands[1] == "next")
+				{
+					goToNextRoom(rooms, currentRoomNum);
+					
+				}
+				else if (commands[1] == "prev")
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+				}
+				else if (commands[1] == rooms[currentRoomNum].nextDoor)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+					
+				}
+				else if (commands[1] == rooms[currentRoomNum].prevDoor)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+					
+				}
+				else if (commands[1] == "north" && rooms[currentRoomNum].prevRoom == 0)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "east" && rooms[currentRoomNum].prevRoom == 1)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "south" && rooms[currentRoomNum].prevRoom == 3)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "west" && rooms[currentRoomNum].prevRoom == 2)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "north" && rooms[currentRoomNum].nextRoom == 0)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "east" && rooms[currentRoomNum].nextRoom == 1)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "south" && rooms[currentRoomNum].nextRoom == 3)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "west" && rooms[currentRoomNum].nextRoom == 2)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+				}
+				else
+				{
+					cout << "It seems like you are trying to go the wrong way" << endl;
+				}
 			}
-			else if (commands[1] == "prev")
+			else
 			{
-				goToPrevRoom(currentRoomNum);
+				if (commands[1] == "tunnel" || commands[1] == "staircase")
+				{
+					goToNextRoom(rooms, currentRoomNum);
+					
+				}
+				else if (commands[1] == "next")
+				{
+					cout << "The location of the next room does not seem obvious from here.  You may need to take an unconventional route" << endl;
+				}
+				else if (commands[1] == "prev")
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+				}
+				else if (commands[1] == rooms[currentRoomNum].nextDoor)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+					
+				}
+				else if (commands[1] == rooms[currentRoomNum].prevDoor)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+					
+				}
+				else if (commands[1] == "north" && rooms[currentRoomNum].prevRoom == 0)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "east" && rooms[currentRoomNum].prevRoom == 1)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "south" && rooms[currentRoomNum].prevRoom == 3)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "west" && rooms[currentRoomNum].prevRoom == 2)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "north" && rooms[currentRoomNum].nextRoom == 0)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "east" && rooms[currentRoomNum].nextRoom == 1)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "south" && rooms[currentRoomNum].nextRoom == 3)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+				}
+				else if (commands[1] == "west" && rooms[currentRoomNum].nextRoom == 2)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+				}
+				else
+				{
+					cout << "It seems like you are trying to go the wrong way" << endl;
+				}
 			}
+			
 
 		}
 		else if (commands[0] == "take")
@@ -524,9 +751,9 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 			takeItem(commands[1], playerInventory, rooms, currentRoomNum);
 
 		}
-		else if (commands[0] == "use")
+		else if (commands[0] == "use" || commands[0] == "shoot" || commands[0] == "climb" || commands[0] == "drink" || commands[0] == "jump" || commands[0] == "read")
 		{
-			int useItem(struct item item, struct inventory &playerInventory, int currentRoomNum);
+			useItem(commands[1], playerInventory, rooms, currentRoomNum);
 
 		}
 		else if (commands[0] == "help")
@@ -593,9 +820,10 @@ void importItemData(vector <struct room> &rooms)
 		string itemFileName = "./itemdata/item";
 		string fileLine;
 		
-		for (int k = 0; k < 1; k++)
+		for (int k = 0; k < NUMITEMS; k++)
 		{
 		
+			string itemFileName = "./itemdata/item";
 			itemFileName += to_string(k);
 			itemFileName += ".txt";
 			ifstream inFile;
@@ -617,34 +845,43 @@ void importItemData(vector <struct room> &rooms)
 				
 				if (lineCounter == 1)
 				{
+					fileLine.erase(fileLine.length() - 1);
+					newItem.itemNum = stoi(fileLine);
+				}
+				else if (lineCounter == 2)
+				{
 					newItem.name = fileLine;
 					newItem.name.erase(newItem.name.length() - 1);
 				}
-
-				else if (lineCounter == 2)
+				else if (lineCounter == 3)
 				{
 					newItem.description = fileLine;
 					newItem.description.erase(newItem.description.length() - 1);
 				}
-				else if (lineCounter == 3)
+				else if (lineCounter == 4)
 				{
 					fileLine.erase(fileLine.length() - 1);
 					newItem.usedInRoom = stoi(fileLine);
 				}
-				else if (lineCounter == 4)
+				else if (lineCounter == 5)
 				{
 					fileLine.erase(fileLine.length() - 1);
 					newItem.canTake = stoi(fileLine);
 				}
-				else if (lineCounter == 5)
+				else if (lineCounter == 6)
 				{
 					fileLine.erase(fileLine.length() - 1);
 					newItem.roomNum = stoi(fileLine);
 				}
-				else if (lineCounter == 6)
+				else if (lineCounter == 7)
 				{
-					newItem.command = fileLine;
-					newItem.command.erase(newItem.command.length() - 1);
+					fileLine.erase(fileLine.length() - 1);
+					newItem.useText1 = fileLine;
+				}
+				else if (lineCounter == 8)
+				{
+					fileLine.erase(fileLine.length() - 1);
+					newItem.useText2 = fileLine;
 				}
 				
 				lineCounter++;

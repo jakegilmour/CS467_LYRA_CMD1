@@ -1,0 +1,9 @@
+17
+parcel
+You notice a small parcel.  It is the type that can be tied to pigeons to send messages.  Unfortunately you have nobody to send a message to, so this parcel wouldn't do you much good.
+3
+0
+3
+
+
+

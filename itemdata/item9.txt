@@ -1,0 +1,9 @@
+9
+throne
+You see a throne.  The king is on the throne.  He doesn't appear to notice you.
+14
+0
+14
+
+
+

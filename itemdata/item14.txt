@@ -1,0 +1,9 @@
+14
+guard duty roster
+This roster contains a list of all the guards in the castle.  It appears that there are normally guards stationed all throughout the castle.  It appears that today there are guards listed in the dungeon, the cellar,  and solar room, the kitchen, the pantry, the treasure room, the chapel, and the great hall.
+2
+1
+2
+You feel a little better now that you know where the guards are
+
+

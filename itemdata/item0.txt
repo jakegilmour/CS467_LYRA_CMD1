@@ -1,6 +1,9 @@
-window
-item description
 0
+dungeon key
+The key appears to open the lock in the dungeon.
 0
+1
 0
-tie
+That worked.  The dungeon door is now unlocked
+
+

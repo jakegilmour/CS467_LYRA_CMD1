@@ -1,5 +1,9 @@
 Great Hall
-state1 description
-state2 description
-state3 description
-
+You are in the Great Hall.  This is where the King and all of the Lords come to feast. There is a long table surrounded on both sides by chairs.  The table is set in preparation for the next meal.  There are hunting trophies hung on all of the walls and tapestries draped from the ceilings.  There are candles everywhere but none of them are lit right now.  To the East is the double door leading back to the Master Bed Chamber.  To the North you notice a royal door.
+You are in the Great Hall.  This is where the King and all of the Lords come to feast.  To the East is the double door leading back to the Master Bed Chamber.  To the North you notice a royal door.
+You are in the Great Hall.  To the East is the double door leading back to the Master Bed Chamber.  To the North you notice a royal door that leads to the Throne Room.
+1
+0
+1
+royal door
+double door

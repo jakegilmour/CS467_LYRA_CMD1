@@ -1,5 +1,9 @@
 Master Bed Chamber
-state1 description
-state2 description
-state3 description
-
+You are in the Master Bed Chamber.  This is where the king sleeps.  The bed is huge.  Now you understand why they call large beds "King Size".  There are curtains all around the bed.  There are some windows and the sun is peering in.  There is a table in the corner.  There is a fireplace, but no fire going right now.  To the South is the gilded door leading back to the Chapel Room.  You notice a double door to the West.
+You are in the Master Bed Chamber.  This is where the king sleeps.  To the South is the gilded door leading back to the Chapel Room.  You notice a double door to the West.
+You are in the Master Bed Chamber.  You have been here before.  To the South is the gilded door leading back to the Chapel Room.  To the West is a double door leading to the Great Hall.
+3
+2
+1
+double door
+gilded door

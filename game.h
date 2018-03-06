@@ -1,6 +1,6 @@
 #include <string>
 #include <vector>
-
+#include "textparse.hpp"
 #ifndef GAME
 #define GAME
 
@@ -8,12 +8,15 @@ using namespace std;
 
 struct item
 {
+	int itemNum;
 	string name;
 	string description;
 	int usedInRoom;
 	int canTake;
 	int roomNum;
-	string command;
+	string useText1;
+	string useText2;
+	
 
 };
 
@@ -28,6 +31,22 @@ struct room
 	string description1;
 	string description2;
 	string description3;
+	/*
+	Navigation: 
+		0 = north
+		1 = east
+		2 = west
+		3 = south
+
+	*/
+	
+	int prevRoom;
+	int nextRoom;
+	// 0 if there isn't a door.  1 if there is.
+	int door;
+	string nextDoor;
+	string prevDoor;
+
 	
 };
 
@@ -52,7 +71,7 @@ int goToNextRoom(vector <struct room> &visitedRooms, int &currentRoomNum);
 int goToPrevRoom(int &currentRoomNum);
 int itemIsInRoom(string itemName, vector <struct room> &rooms, int currentRoomNum);
 void importItemData(vector <struct room> &rooms);
-
-
-
+void printRoomDescription(vector <struct room> &rooms, int currentRoomNum);
+int dropItem(string itemName, struct inventory &playerInventory, vector <struct room> &rooms, int currentRoomNum);
+void playGame(vector <struct room> &rooms, struct inventory &playerInventory);
 #endif

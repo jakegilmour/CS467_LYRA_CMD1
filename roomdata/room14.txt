@@ -1,5 +1,9 @@
 Throne Room
-state1 description
-state2 description
-state3 description
-
+You are in the Throne Room.  This is where the King spends most of his day.  It is decorated on all sides with the King's family crest.  There are swords hanging from the walls.  There are seats along the sides of the room where the King's advisors sit when giving him council.  It smells of incense in here.  To the South there is a royal door, the only door in this room.
+You are in the Throne Room.  This is where the King spends most of his day. To the South there is a royal door, the only door in this room.
+Congratulations.  You have overthrown the King.  You can now rule the Seven Kingdoms.
+3
+5
+0
+none
+royal door

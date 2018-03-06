@@ -1,0 +1,8 @@
+29
+main door
+The door is locked and there are no keys in sight.  You start to get a little nervous, because there don't appear to be other ways out of here.
+9
+0
+9
+
+

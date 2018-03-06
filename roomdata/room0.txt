@@ -1,5 +1,9 @@
 Dungeon
-state1 description
-state2 description
-state3 description
-
+It's musky in the dungeon.  You have a small straw matress on the floor.  It's extremely uncomfortable.  You've been here for a while.  It smells bad, partly due to the rats, and partly due to the mold growing on the ceiling.  How much more of this can you take?  On the East side of the cell is the cell door.  The other sides are stone walls.  Maybe it's time to get yourself out of this predicament.
+It's musky in here.  You feel trapped.  To the east of the cell you have a door.  The other sides are stone walls.
+The dungeon is open.  You've been out of here before.  Did you forget something here or is there another reason you've come back?
+5
+1
+1
+cell door
+none

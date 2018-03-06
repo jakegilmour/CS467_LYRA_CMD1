@@ -1,0 +1,9 @@
+2
+lamp
+The lamp helps you see in the dark.
+1
+1
+0
+That worked.  Now you can see.  
+
+

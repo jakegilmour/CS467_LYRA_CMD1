@@ -1,0 +1,8 @@
+45
+guard
+A guard is on duty.  They take turns patrolling the castle.  You won't be able to sneak past him.  Sneaking up on him may not be an option either, although you have a good view of him from where you are standing.  He isn't looking your way, and isn't wearing armor...
+10
+0
+10
+
+

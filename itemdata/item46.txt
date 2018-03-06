@@ -1,0 +1,9 @@
+46
+guard
+A guard is on duty.  They take turns patrolling the castle.  You won't be able to sneak past him.  It may be risky to get into a fight with him, as he could yell and more guards may come.  Guards don't get paid a lot though, so maybe you could disarm him another way.
+11
+0
+11
+
+
+

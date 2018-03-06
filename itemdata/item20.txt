@@ -1,0 +1,9 @@
+20
+barrel
+It appears that the barrel is full of wine.  There doesn't seem to be an easy way to open it though.  Probably better not to waste too much time trying to get in, you need to get out of the castle before you get caught.
+5
+0
+5
+
+
+

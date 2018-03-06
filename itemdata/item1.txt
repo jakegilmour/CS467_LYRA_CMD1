@@ -1,0 +1,10 @@
+1
+castle map
+It's a map of the castle.  From here you should try going to the
+40
+1
+1
+From here you should try going to the
+You are in the throne room.  You wouldn't want to go any further than this
+
+

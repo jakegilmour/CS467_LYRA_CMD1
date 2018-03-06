@@ -1,0 +1,9 @@
+48
+king
+The King is sitting on the throne.  There are no guards arond.  He doens't seem to notice you.  This may be your chance for revenge, but you must be careful, if he yells, the guards may come.
+14
+0
+14
+
+
+
