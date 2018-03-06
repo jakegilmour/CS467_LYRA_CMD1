@@ -20,17 +20,61 @@
     Args - data of strings to be written to a file, size of the data array,
            name of the file, current date and time to written
 */
-void write_to_file(std::string data[], int size, std::string fname, std::string dt) {
+void write_to_file(std::string fname, std::string dt, int currentRoomNum, struct inventory playerInventory, vector <struct room> rooms) {
     std::ofstream afile;
-    int i;
+    struct room aroom;
+    int i, k;
     
     // open and write content to file
     afile.open("./saved_games/" + fname);
-    afile << dt;
     
-    for (i = 0; i < size; i++) {
-        afile << data[i] << '\n';
+    // write datetime and current room
+    afile << dt;
+    afile << currentRoomNum << '\n';
+    
+    // write player inventory
+    afile << "start player inventory\n";
+    afile << playerInventory.numItems << '\n';
+    
+    for (i = 0; i < playerInventory.numItems; i++) {
+        afile << playerInventory.items[i].name << '\n';
+        afile << playerInventory.items[i].description << '\n';
+        afile << playerInventory.items[i].usedInRoom << '\n';
+        afile << playerInventory.items[i].canTake << '\n';
+        afile << playerInventory.items[i].roomNum << '\n';
+        afile << playerInventory.items[i].command << '\n';
     }
+    
+    afile << "end player inventory\n";
+    
+    // write room information
+    afile << "start room data\n";
+    
+    for (i = 0; i < rooms.size(); i++) {
+        aroom = rooms[i];
+        afile << aroom.name << '\n';
+        
+        afile << "start room items\n";
+        
+        for (k = 0; k < aroom.items.size(); k++) {
+            afile << aroom.items[k].name << '\n';
+            afile << aroom.items[k].description << '\n';
+            afile << aroom.items[k].usedInRoom << '\n';
+            afile << aroom.items[k].canTake << '\n';
+            afile << aroom.items[k].roomNum << '\n';
+            afile << aroom.items[k].command << '\n';
+        }
+        
+        afile << "end room items\n";
+        
+        afile << aroom.numItems << '\n';
+        afile << aroom.roomState << '\n';
+        afile << aroom.description1 << '\n';
+        afile << aroom.description2 << '\n';
+        afile << aroom.description3 << '\n';
+    }
+    
+    afile << "end room data\n";
     
     afile.close();
 }
@@ -253,10 +297,11 @@ int save_menu() {
 }
 
 /*
-    Saves an array of data to a text file.
-    Args - array of data, size of array
+    Usage: This function should be called when saving the game. Saves game state to a text file.
+    Args: - current room number, player inventory, each room
+    Struct info in game.h
 */
-void save_data(std::string data [], int size) {
+void save_game(int currentRoomNum, struct inventory playerInventory, vector <struct room> rooms) {
     int filen = save_menu();
     time_t rawtime;
     struct tm *timeinfo;
@@ -284,7 +329,7 @@ void save_data(std::string data [], int size) {
                 std::transform(overwrite.begin(), overwrite.end(), overwrite.begin(), ::tolower);
                 
                 if (overwrite.compare("y") == 0 || overwrite.compare("yes") == 0) {
-                    write_to_file(data, size, fname, dt);
+                    write_to_file(fname, dt, currentRoomNum, playerInventory, rooms);
                     printf("Save complete.\n");
                     break;
                 }
@@ -299,7 +344,7 @@ void save_data(std::string data [], int size) {
         }
         // write datetime to file then each data item in string separated with \n
         else {
-            write_to_file(data, size, fname, dt);
+            write_to_file(fname, dt, currentRoomNum, playerInventory, rooms);
             printf("Save complete.\n");
         }
     }
@@ -309,9 +354,56 @@ void save_data(std::string data [], int size) {
 }
 
 //int main(int argc, const char * argv[]) {
-//    int size = 3;
-//    std::string data[] = { "game2", "5", "dungeon" };
-//    save_data(data, size);
+//    int currentRoomNum = 2;
+//    struct inventory playerInventory;
+//    vector<struct room> rooms;
+//    item item1, item2;
+//    room rm1, rm2;
+//
+//    // make 2 items to test
+//    item1.name = "Item 1";
+//    item1.description = "This is an Item 1 description.";
+//    item1.usedInRoom = 1;
+//    item1.canTake = 1;
+//    item1.roomNum = 7;
+//    item1.command = "go";
+//
+//    item2.name = "Item 2";
+//    item2.description = "This is an Item 2 description.";
+//    item2.usedInRoom = 0;
+//    item2.canTake = 0;
+//    item2.roomNum = 5;
+//    item2.command = "climb";
+//
+//    // setup playerInventory
+//    playerInventory.numItems = 2;
+//    playerInventory.items.push_back(item1);
+//    playerInventory.items.push_back(item1);
+//
+//    // setup rooms
+//    rm1.name = "Room 1";
+//    rm1.items.push_back(item1);
+//    rm1.items.push_back(item2);
+//    rm1.numItems = 2;
+//    rm1.roomState = 2;
+//    rm1.description1 = "This is description 1";
+//    rm1.description2 = "This is description 2";
+//    rm1.description3 = "This is description 3";
+//
+//    rm2.name = "Room 2";
+//    rm2.items.push_back(item2);
+//    rm2.items.push_back(item1);
+//    rm2.numItems = 2;
+//    rm2.roomState = 1;
+//    rm2.description1 = "This is description 1-2";
+//    rm2.description2 = "This is description 2-2";
+//    rm2.description3 = "This is description 3-2";
+//
+//    rooms.push_back(rm1);
+//    rooms.push_back(rm2);
+//
+//    // test
+//    save_game(currentRoomNum, playerInventory, rooms);
 //
 //    return 0;
 //}
