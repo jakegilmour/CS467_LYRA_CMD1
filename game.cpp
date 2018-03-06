@@ -623,6 +623,17 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 					goToPrevRoom(currentRoomNum);
 					printRoomDescription(rooms, currentRoomNum);
 				}
+				else if (commands[1] == rooms[currentRoomNum + 1].name)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+					
+				}
+				else if (commands[1] == rooms[currentRoomNum - 1].name)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+					
+				}
 				else if (commands[1] == rooms[currentRoomNum].nextDoor)
 				{
 					goToNextRoom(rooms, currentRoomNum);
@@ -691,6 +702,17 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 					goToPrevRoom(currentRoomNum);
 					printRoomDescription(rooms, currentRoomNum);
 				}
+				else if (commands[1] == rooms[currentRoomNum + 1].name)
+				{
+					goToNextRoom(rooms, currentRoomNum);
+					
+				}
+				else if (commands[1] == rooms[currentRoomNum - 1].name)
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+					
+				}
 				else if (commands[1] == rooms[currentRoomNum].nextDoor)
 				{
 					goToNextRoom(rooms, currentRoomNum);
@@ -751,7 +773,7 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 			takeItem(commands[1], playerInventory, rooms, currentRoomNum);
 
 		}
-		else if (commands[0] == "use" || commands[0] == "shoot" || commands[0] == "climb" || commands[0] == "drink" || commands[0] == "jump" || commands[0] == "read")
+		else if (commands[0] == "use")
 		{
 			useItem(commands[1], playerInventory, rooms, currentRoomNum);
 
@@ -789,6 +811,26 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 				
 			}
 
+		}
+		else if (commands[0] == "shoot" && commands[1] == "bow")
+		{
+			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+		}
+		else if (commands[0] == "read" && commands[1] == "castle map")
+		{
+			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+		}
+		else if (commands[0] == "jump" && commands[1] == "window")
+		{
+			goToNextRoom(rooms, currentRoomNum);
+		}
+		else if (commands[0] == "drink" && commands[1] == "mead")
+		{
+			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+		}
+		else if (commands[0] == "tie" && commands[1] == "rope")
+		{
+			useItem(commands[1], playerInventory, rooms, currentRoomNum);
 		}
 		else
 		{
