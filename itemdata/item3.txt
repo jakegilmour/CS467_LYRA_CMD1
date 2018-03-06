@@ -4,6 +4,6 @@ It appears this rope could help you climb out of a window.
 3
 1
 1
-That was smart.  Now you can use the rope to climb out of the window. 
+That was smart.  Now you can climb out of the window. 
 
 
