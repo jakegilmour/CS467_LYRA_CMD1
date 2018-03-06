@@ -37,12 +37,14 @@ void write_to_file(std::string fname, std::string dt, int currentRoomNum, struct
     afile << playerInventory.numItems << '\n';
     
     for (i = 0; i < playerInventory.numItems; i++) {
+        afile << "start item" << '\n';
         afile << playerInventory.items[i].name << '\n';
         afile << playerInventory.items[i].description << '\n';
         afile << playerInventory.items[i].usedInRoom << '\n';
         afile << playerInventory.items[i].canTake << '\n';
         afile << playerInventory.items[i].roomNum << '\n';
         afile << playerInventory.items[i].command << '\n';
+        afile << "end item" << '\n';
     }
     
     afile << "end player inventory\n";
@@ -52,17 +54,21 @@ void write_to_file(std::string fname, std::string dt, int currentRoomNum, struct
     
     for (i = 0; i < rooms.size(); i++) {
         aroom = rooms[i];
+        
+        afile << "start room" << '\n';
         afile << aroom.name << '\n';
         
         afile << "start room items\n";
         
         for (k = 0; k < aroom.items.size(); k++) {
+            afile << "start item" << '\n';
             afile << aroom.items[k].name << '\n';
             afile << aroom.items[k].description << '\n';
             afile << aroom.items[k].usedInRoom << '\n';
             afile << aroom.items[k].canTake << '\n';
             afile << aroom.items[k].roomNum << '\n';
             afile << aroom.items[k].command << '\n';
+            afile << "end item" << '\n';
         }
         
         afile << "end room items\n";
@@ -72,6 +78,8 @@ void write_to_file(std::string fname, std::string dt, int currentRoomNum, struct
         afile << aroom.description1 << '\n';
         afile << aroom.description2 << '\n';
         afile << aroom.description3 << '\n';
+        
+        afile << "end room" << '\n';
     }
     
     afile << "end room data\n";
@@ -378,7 +386,7 @@ void save_game(int currentRoomNum, struct inventory playerInventory, vector <str
 //    // setup playerInventory
 //    playerInventory.numItems = 2;
 //    playerInventory.items.push_back(item1);
-//    playerInventory.items.push_back(item1);
+//    playerInventory.items.push_back(item2);
 //
 //    // setup rooms
 //    rm1.name = "Room 1";
