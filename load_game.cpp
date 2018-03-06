@@ -15,10 +15,25 @@
 #include "save_game.hpp"
 #include <vector>
 
+/*
+     Usage: Find index of matching string in a vector.
+     Returns: Index of matching vector. -1 if not found.
+*/
+int find_index(vector<std::string> avector, std::string astring) {
+    int i = 0;
+    for (i = 0; i < avector.size(); i++) {
+        if (astring.compare(avector[i]) == 0) {
+            return i;
+        }
+    }
+    
+    return -1;
+}
 
 /*
-     Displays a menu of saved files and opening if there are none.
-     User selects int 1-3 of the file they want to load.
+     Usage: Displays a menu of saved files and opening if there are none.
+            User selects int 1-3 of the file they want to load.
+     Returns: int 1-3 selected by user.
  */
 int load_menu() {
     std::string user_input;
@@ -216,16 +231,22 @@ int load_menu() {
 }
 
 /*
-    Opens a file selected by the user and loads the data by
-    assigning state variables
+    Usage: Initializes state variables passed to load the current game.
+           load_menu() is used within this function to find the file to load.
+    Args:  All by reference... current room number, player inventory, vector of rooms
  */
-std::vector<std::string> load_data() {
+void load_game(int &currentRoomNum, struct inventory &playerInventory, vector <struct room> &rooms) {
     std::ifstream afile;
     std::vector<std::string> mydata;
     std::string state_var = "";
     char c;
     int filen = load_menu();
     std::string fname = "saved_game_" + std::to_string(filen) + ".txt";
+    int data_index = 0;
+    int struct_item_counter = 0;
+    int struct_room_counter = 0;
+    item temp_item;
+    room temp_room;
     
     // open and write content to file
     afile.open("./saved_games/" + fname);
@@ -249,16 +270,183 @@ std::vector<std::string> load_data() {
         afile.close();
     }
     
-    return mydata;
-}
-
-int main(int argc, const char * argv[]) {
-    int i;
-    std::vector<std::string> data = load_data();
+    // assign game state variables using mydata
+    currentRoomNum = std::stoi(mydata[1]);
     
-    for(i = 0; i < data.size(); ++i)
-        std::cout << data[i] << '\n';
-
-    return 0;
+    // ensure inventory is empty before filling content
+    playerInventory.items.clear();
+    
+    playerInventory.numItems = std::stoi(mydata[3]);
+    
+    // start player inventory section
+    data_index = 5;
+    while (mydata[data_index].compare("end player inventory") != 0) {
+        
+        // item complete. pushback and start on next one.
+        if (mydata[data_index].compare("end item") == 0) {
+            data_index++;
+            struct_item_counter = 0;
+            playerInventory.items.push_back(temp_item);
+            continue;
+        }
+        else if (mydata[data_index].compare("start item") == 0) {
+            data_index++;
+            continue;
+        }
+        
+        if (struct_item_counter == 0) {
+            temp_item.name = mydata[data_index];
+            data_index++;
+            struct_item_counter++;
+        }
+        else if (struct_item_counter == 1) {
+            temp_item.description = mydata[data_index];
+            data_index++;
+            struct_item_counter++;
+        }
+        else if (struct_item_counter == 2) {
+            temp_item.usedInRoom = std::stoi(mydata[data_index]);
+            data_index++;
+            struct_item_counter++;
+        }
+        else if (struct_item_counter == 3) {
+            temp_item.canTake = std::stoi(mydata[data_index]);
+            data_index++;
+            struct_item_counter++;
+        }
+        else if (struct_item_counter == 4) {
+            temp_item.roomNum = std::stoi(mydata[data_index]);
+            data_index++;
+            struct_item_counter++;
+        }
+        else if (struct_item_counter == 5) {
+            temp_item.command = mydata[data_index];
+            data_index++;
+            struct_item_counter++;
+        }
+    }
+    
+    // start room data section
+    struct_item_counter = 0;
+    data_index = find_index(mydata, "start room data");
+    
+    while (mydata[data_index].compare("end room data") != 0) {
+        
+        // room complete. pushback and start on next one.
+        if (mydata[data_index].compare("end room") == 0) {
+            data_index++;
+            struct_room_counter = 0;
+            rooms.push_back(temp_room);
+            continue;
+        }
+        else if (mydata[data_index].compare("start item") == 0) {
+            data_index++;
+            continue;
+        }
+        else if (mydata[data_index].compare("start room items") == 0) {
+            data_index++;
+            continue;
+        }
+        else if (mydata[data_index].compare("start room data") == 0) {
+            data_index++;
+            continue;
+        }
+        else if (mydata[data_index].compare("start room") == 0) {
+            data_index++;
+            continue;
+        }
+        
+        if (struct_room_counter == 0) {
+            temp_room.name = mydata[data_index];
+            data_index++;
+            struct_room_counter++;
+        }
+        else if (struct_room_counter == 1) {
+            temp_room.items.clear();
+            while (mydata[data_index].compare("end room items") != 0) {
+                
+                // item complete. pushback and start on next one.
+                if (mydata[data_index].compare("end item") == 0) {
+                    data_index++;
+                    struct_item_counter = 0;
+                    temp_room.items.push_back(temp_item);
+                    continue;
+                }
+                else if (mydata[data_index].compare("start item") == 0) {
+                    data_index++;
+                    continue;
+                }
+                
+                if (struct_item_counter == 0) {
+                    temp_item.name = mydata[data_index];
+                    data_index++;
+                    struct_item_counter++;
+                }
+                else if (struct_item_counter == 1) {
+                    temp_item.description = mydata[data_index];
+                    data_index++;
+                    struct_item_counter++;
+                }
+                else if (struct_item_counter == 2) {
+                    temp_item.usedInRoom = std::stoi(mydata[data_index]);
+                    data_index++;
+                    struct_item_counter++;
+                }
+                else if (struct_item_counter == 3) {
+                    temp_item.canTake = std::stoi(mydata[data_index]);
+                    data_index++;
+                    struct_item_counter++;
+                }
+                else if (struct_item_counter == 4) {
+                    temp_item.roomNum = std::stoi(mydata[data_index]);
+                    data_index++;
+                    struct_item_counter++;
+                }
+                else if (struct_item_counter == 5) {
+                    temp_item.command = mydata[data_index];
+                    data_index++;
+                    struct_item_counter++;
+                }
+            }
+            struct_room_counter++;
+            data_index++;
+        }
+        else if (struct_room_counter == 2) {
+            temp_room.numItems = std::stoi(mydata[data_index]);
+            data_index++;
+            struct_room_counter++;
+        }
+        else if (struct_room_counter == 3) {
+            temp_room.roomState = std::stoi(mydata[data_index]);
+            data_index++;
+            struct_room_counter++;
+        }
+        else if (struct_room_counter == 4) {
+            temp_room.description1 = mydata[data_index];
+            data_index++;
+            struct_room_counter++;
+        }
+        else if (struct_room_counter == 5) {
+            temp_room.description2 = mydata[data_index];
+            data_index++;
+            struct_room_counter++;
+        }
+        else if (struct_room_counter == 6) {
+            temp_room.description3 = mydata[data_index];
+            data_index++;
+            struct_room_counter++;
+        }
+    }
 }
+
+//int main(int argc, const char * argv[]) {
+//    
+//    int currentRoomNum;
+//    struct inventory playerInventory;
+//    vector <struct room> rooms;
+//
+//    load_game(currentRoomNum, playerInventory, rooms);
+//
+//    return 0;
+//}
 

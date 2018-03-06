@@ -12,8 +12,10 @@
 #include <stdio.h>
 #include <vector>
 #include <string>
+#include "game.h"
 
-std::vector<std::string> load_data();
+int find_index(vector<std::string>, std::string);
 int load_menu();
+void load_game(int&, struct inventory&, vector <struct room>&);
 
 #endif /* load_game_hpp */
