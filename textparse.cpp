@@ -22,8 +22,8 @@ void print_vector(std::vector<std::string> avector) {
  */
 std::vector<std::string> getMatch(std::vector<std::string> words, std::string array[], int size)
 {
-    int i, k;
-    std::string catword, aword, valid_word, next_word, dbl_word, trip_word, quad_word;
+    int i, k, limit;
+    std::string catword, aword, valid_word, next_word, dbl_word, trip_word, quad_word, prev_word;
     std::vector<std::string> true_words; // holds concatenated valid words and valid singles
     
     // compare each word in words for a match in array
@@ -32,6 +32,7 @@ std::vector<std::string> getMatch(std::vector<std::string> words, std::string ar
             aword = words.at(i);
             valid_word = array[k];
             if (aword.compare(valid_word) == 0) {
+                // special case for "look" and "look at"
                 if (aword.compare("look") == 0) {
                     // if it's not the last element. since last element has no next element.
                     if (i != words.size() - 1) {
@@ -44,11 +45,42 @@ std::vector<std::string> getMatch(std::vector<std::string> words, std::string ar
                         // add only "look"
                         else { true_words.push_back(aword); }
                     }
-                    // add a valid single word that's not "look"
+                    // add "look" when it's the last element
+                    else {
+                        true_words.push_back(aword);
+                    }
+                }
+                // special case for "dungeon window" and "window", "sleeping guard" and "guard"
+                else if ( aword.compare("guard") == 0 || aword.compare("window") == 0 ) {
+                    // if it's not the first element. since last element has no prev element.
+                    if (i != 0) {
+                        prev_word = words.at(i-1);
+                        catword = prev_word + " " + aword;
+                        // ignore "dungeon window" or "sleeping guard" it'll be found in the next loop below
+                        if (catword.compare("dungeon window") == 0 || catword.compare("sleeping guard") == 0) {
+                            continue;
+                        }
+                        // add only "guard" or "window"
+                        else { true_words.push_back(aword); }
+                    }
+                    // add "guard" or "window" when it's the last element
                     else { true_words.push_back(aword); }
                     
                 }
-                else { true_words.push_back(aword); }
+                // add a regular valid word
+                else {
+                    // don't pushback "dungeon" if it is followed by "window"
+                    if ( aword.compare("dungeon") == 0 && i != words.size() - 1 ) {
+                        next_word = words.at(i+1);
+                        catword = aword + " " + next_word;
+                        if (catword.compare("dungeon window") != 0) {
+                            true_words.push_back(aword);
+                        }
+                    }
+                    else {
+                        true_words.push_back(aword);
+                    }
+                }
             }
         }
     }
@@ -57,19 +89,22 @@ std::vector<std::string> getMatch(std::vector<std::string> words, std::string ar
     for (i = 0; i < words.size(); i++) {
         for (k = 0; k < size; k++) {
             // check for double, triple, and quad words
-            if (i < words.size() - 1) {
+            limit = int(words.size() - 1);
+            if (i < limit && limit >= 0) {
                 dbl_word = words.at(i) + " " + words.at(i+1);
                 if (dbl_word.compare(array[k]) == 0) {
                     true_words.push_back(dbl_word);
                 }
             }
-            if (i < words.size() - 2) {
+            limit = int(words.size() - 2);
+            if (i < limit && limit >= 0) {
                 trip_word = words.at(i) + " " + words.at(i+1) + " " + words.at(i+2);
                 if (trip_word.compare(array[k]) == 0) {
                     true_words.push_back(trip_word);
                 }
             }
-            if (i < words.size() - 3) {
+            limit = int(words.size() - 3);
+            if (i < limit && limit >= 0) {
                 quad_word = words.at(i) + " " + words.at(i+1) + " " + words.at(i+2) + " " + words.at(i+3);
                 if (quad_word.compare(array[k]) == 0) {
                     true_words.push_back(quad_word);
@@ -243,15 +278,20 @@ std::vector<std::string> textParse(std::string astring)
 //    words.push_back("the");
 //    words.push_back("lamp");
 //
-//    printf("getMatch results...\n");
+////    printf("getMatch results...\n");
+////
+////    result = getMatch(words, validVerbs, 16);
+////
+////    for (i = 0; i < result.size(); i++) {
+////        printf("%s\n", result[i].c_str());
+////    }
 //
-//    result = getMatch(words, validVerbs, 16);
-//
-//    for (i = 0; i < result.size(); i++) {
-//        printf("%s\n", result[i].c_str());
-//    }
-//
-//    std::string text = "look at all the ways of knighthood book from over there";
+//    // inspect lamp
+//    // dungeon window
+//    // window
+//    // inspect sleeping guard
+//    
+//    std::string text = "inspect sleeping guard";
 //
 //    printf("\ntextParse results...\n");
 //
