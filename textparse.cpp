@@ -1,96 +1,94 @@
-//
-//  textparse.cpp
-//  capstone_text_adventure
-//
-//  Created by Kevin Conner on 1/21/18.
-//  Copyright © 2018 Kevin Conner. All rights reserved.
-//
-
 #include <iostream>
 #include <string>
 #include <vector>
 #include "textparse.hpp"
 
 /*
- Textparse helper function finds a matching string in vector that is also in the array
- Args - vector of words, array of strings to compare to, size of the array.
- Returns - string of first match found. "no match found" when no match found.
- */
-std::string getMatch(std::vector<std::string> words, std::string array[], int size)
-{
-    int n = 0;
-    int i, k;
-    std::string catword;
-    
-    // compare each word in words for a match in array
-    for (i = 0; i < words.size(); i++) {
-        for (k = 0; k < size; k++) {
-            if (words.at(i).compare(array[k]) == 0) {
-                return array[k];
-            }
-        }
+    Displays the contents of a vector
+    Args - a vector of strings
+*/
+void print_vector(std::vector<std::string> avector) {
+    int i;
+    for (i = 0; i < avector.size(); i++) {
+        printf("\"%s\" ", avector[i].c_str());
     }
-    
-    // if no single word matches were found then try possible words
-    // with a space such as dungeon key
-    if (n == 0) {
-        for (i = 0; i < words.size() - 1; i++) {
-            for (k = 0; k < size; k++) {
-                // combine word ie. "dungeon" + " " + "key" = "dungeon key"
-                catword = words.at(i) + " " + words.at(i+1);
-                if (catword.compare(array[k]) == 0) {
-                    return catword;
-                }
-            }
-        }
-    }
-    
-    return "no match found";
+    printf("\n");
 }
 
 /*
-    Textparse helper function finds the number of occurances of a vector of strings in a array.
-    Args - vector of words, array of strings to compare to, size of the array.
-    Returns - number of occurances of a word found in the array.
+ Textparse helper function finds a matching string in vector that is also in the array
+ Args - vector of words, array of strings to compare to, size of the array.
+ Returns - a vector of strings of the matches
  */
-int occurrences(std::vector<std::string> words, std::string array[], int size)
+std::vector<std::string> getMatch(std::vector<std::string> words, std::string array[], int size)
 {
-    int n = 0;
     int i, k;
-    std::string catword;
+    std::string catword, aword, valid_word, next_word, dbl_word, trip_word, quad_word;
+    std::vector<std::string> true_words; // holds concatenated valid words and valid singles
     
     // compare each word in words for a match in array
     for (i = 0; i < words.size(); i++) {
         for (k = 0; k < size; k++) {
-            if (words.at(i).compare(array[k]) == 0) {
-                n++;
+            aword = words.at(i);
+            valid_word = array[k];
+            if (aword.compare(valid_word) == 0) {
+                if (aword.compare("look") == 0) {
+                    // if it's not the last element. since last element has no next element.
+                    if (i != words.size() - 1) {
+                        next_word = words.at(i+1);
+                        catword = aword + " " + next_word;
+                        // ignore "look at" it'll be found in the next loop below
+                        if (catword.compare("look at") == 0) {
+                            continue;
+                        }
+                        // add only "look"
+                        else { true_words.push_back(aword); }
+                    }
+                    // add a valid single word that's not "look"
+                    else { true_words.push_back(aword); }
+                    
+                }
+                else { true_words.push_back(aword); }
             }
         }
     }
     
-    // if no single word matches were found then try possible words
-    // with a space such as dungeon key
-    if (n == 0) {
-        for (i = 0; i < words.size() - 1; i++) {
-            for (k = 0; k < size; k++) {
-                // combine word ie. "dungeon" + " " + "key" = "dungeon key"
-                catword = words.at(i) + " " + words.at(i+1);
-                if (catword.compare(array[k]) == 0) {
-                        n++;
+    // look for possible words with spaces such as "dungeon key"
+    for (i = 0; i < words.size(); i++) {
+        for (k = 0; k < size; k++) {
+            // check for double, triple, and quad words
+            if (i < words.size() - 1) {
+                dbl_word = words.at(i) + " " + words.at(i+1);
+                if (dbl_word.compare(array[k]) == 0) {
+                    true_words.push_back(dbl_word);
+                }
+            }
+            if (i < words.size() - 2) {
+                trip_word = words.at(i) + " " + words.at(i+1) + " " + words.at(i+2);
+                if (trip_word.compare(array[k]) == 0) {
+                    true_words.push_back(trip_word);
+                }
+            }
+            if (i < words.size() - 3) {
+                quad_word = words.at(i) + " " + words.at(i+1) + " " + words.at(i+2) + " " + words.at(i+3);
+                if (quad_word.compare(array[k]) == 0) {
+                    true_words.push_back(quad_word);
                 }
             }
         }
     }
     
-    return n;
+    return true_words;
 }
+
 
 /*
     Parses a string to find a verb and a item that is used by the verb.
     Args - a std::string
-    Returns - std::vector {verb, item}. Verb and item are lower case strings. Verbs go and move are
+    Returns - std::vector {verb, item}. Verb and item are lower case strings. Verbs "go" and "move" are
     associated with locations and returns {verb, location}. Some verbs are not associated with items or
-    locations and just returns {verb}.
+    locations and just returns {verb} such as "items" and "help". When only a location is selected
+    {"go", location} is returned.
  */
 std::vector<std::string> textParse(std::string astring)
 {
@@ -98,42 +96,54 @@ std::vector<std::string> textParse(std::string astring)
     std::vector<std::string> result;
     std::vector<std::string> words;
     std::string temp;
-    const int verbsSize = 13;
-    const int itemsSize = 14;
-    const int placesSize = 19;
-    
+    const int verbsSize = 16;
+    const int itemsSize = 44;
+    const int placesSize = 30;
+
     std::string validVerbs[verbsSize] = {   "inspect", "open", "shoot", "jump",
-                                            "tie", "climb", "drink", "read", "items"
-                                            "move", "go", "move", "take", "help" };
-    
-    std::string validItems[itemsSize] = {   "dungeon key", "castle map", "lamp",
-                                            "rope", "food", "window", "sword",
-                                            "bow", "arrow", "treasure sack",
-                                            "mead", "door", "guard", "flour" };
-    
+                                            "tie", "climb", "drink", "read", "items",
+                                            "move", "go", "move", "take", "help",
+                                            "look", "look at" };
+
+    std::string validItems[itemsSize] = {   "dungeon key", "castle map", "lamp", "rope", "food",
+                                            "window", "sword", "treasure sack", "mead", "door",
+                                            "guard", "flour", "dungeon window", "dragon tales encyclopedia", "rat",
+                                            "guard duty roster", "suit of armor", "pigeons", "parcel", "shield",
+                                            "spear", "barrel", "spider", "bed", "trophy",
+                                            "toilet", "crack in the wall", "ways of knighthood book", "cook book", "fruit basket",
+                                            "main door", "gold cup", "treasure chest", "holy book", "priest robes",
+                                            "bed", "rotten food", "table", "chair", "sleeping guard",
+                                            "king", "bow and arrow", "strange noise", "throne"
+        
+    };
+
     std::string validPlaces[placesSize] = { "north", "east", "west", "south",
                                             "dungeon", "treasure", "basement",
                                             "throne", "great hall", "chamber",
                                             "solar", "lavatory", "kitchen",
                                             "pantry", "guard", "chapel", "cellar",
-                                            "arms", "dovecote" };
-    
+                                            "arms", "dovecote", "cell door",
+                                            "wooden door", "large door", "window",
+                                            "staircase", "old door", "tunnel",
+                                            "vaulted door", "gilded door", "double door",
+                                            "royal door" };
+
     // add null bit if it doesn't have one
     if (astring.length() - 1 != '\0') {
         astring += '\0';
     }
-    
+
     // check empty command
     if (astring.length() == 0) {
         printf("Nothing was entered.\n");
         return result;
     }
     // check command length
-    else if (astring.length() > 50) {
+    else if (astring.length() > 250) {
         printf("Your command is too long.\n");
         return result;
     }
-    
+
     for (i = 0; i < astring.length(); i++) {
         // Check for spaces, \n, and \0 for when a word completes
         if (astring[i] == ' ' || astring[i] == '\n' || astring[i] == '\0') {
@@ -149,63 +159,107 @@ std::vector<std::string> textParse(std::string astring)
         }
     }
     
-    // check for number of occurances in valid verbs
-    int nVerbMatches = occurrences(words, validVerbs, verbsSize);
-    int nItemMatches = occurrences(words, validItems, itemsSize);
-    int nPlaceMatches = occurrences(words, validPlaces, placesSize);
-    
-    // Find out if it's {verb, item}, {verb, place}, {verb}, or no match (empty result vector)
-    if (nVerbMatches == 0) {
-        printf("No valid verbs were used.\n");
-        return result;
-    }
-    else if (nVerbMatches > 1) {
+    // get matches
+    std::vector<std::string> verbMatches = getMatch(words, validVerbs, verbsSize);
+    std::vector<std::string> itemMatches = getMatch(words, validItems, itemsSize);
+    std::vector<std::string> placeMatches = getMatch(words, validPlaces, placesSize);
+
+    // check for number of occurances
+    long nVerbMatches = verbMatches.size();
+    long nItemMatches = itemMatches.size();
+    long nPlaceMatches = placeMatches.size();
+
+    // Find out if it's {verb, item}, {verb, place}, {verb}, {place} or no match (empty result vector)
+    if (nVerbMatches > 1) {
         printf("Please use only one valid verb.\n");
+        printf("The following valid verbs were found...\n");
+        print_vector(verbMatches);
         return result;
     }
-    else if (nVerbMatches == 1) {
-        // get the verb used
-        std::string verbMatch = getMatch(words, validVerbs, verbsSize);
-        
-        // check places and items now.
-        if (nPlaceMatches == 0 && nItemMatches == 0) {
-            if (verbMatch == "help" || verbMatch == "items") {
-                // only valid verb. return {verb}
-                result.push_back(verbMatch);
-                return result;
-            }
-            else {
-                // if not help or items then a place or item
-                printf("The command, %s, requires an item or place to be specified.\n", verbMatch.c_str());
-            }
-        }
-        else if (nPlaceMatches >= 1 && nItemMatches >= 1) {
-            printf("An item(s) and place(s) were both selected.\n");
-            return result;
-        }
-        // case {verb, place}
-        else if (nPlaceMatches == 1 && nItemMatches == 0) {
-            result.push_back(verbMatch);
-            result.push_back(getMatch(words, validPlaces, placesSize));
-            return result;
-        }
-        // case {verb, item}
-        else if (nPlaceMatches == 0 && nItemMatches == 1) {
-            result.push_back(verbMatch);
-            result.push_back(getMatch(words, validItems, itemsSize));
-            return result;
-        }
+    else if (nItemMatches > 1) {
+        printf("Please use only one valid item.\n");
+        printf("The following valid items were found...\n");
+        print_vector(itemMatches);
+        return result;
     }
+    else if (nPlaceMatches > 1) {
+        printf("Please use only one valid location.\n");
+        printf("The following valid locations were found...\n");
+        print_vector(placeMatches);
+        return result;
+    }
+    // can't have item and a place
+    else if (nItemMatches == 1 && nPlaceMatches == 1) {
+        printf("A valid place, \"%s\", and a valid item, \"%s\", cannot be used together. Please use {verb, item} or {verb, place}.\n", placeMatches[0].c_str(), itemMatches[0].c_str());
+        return result;
+    }
+    // {place}
+    else if (nPlaceMatches == 1 && nItemMatches == 0 && nVerbMatches == 0) {
+        result.push_back("go");
+        result.push_back(placeMatches[0]);
+        return result;
+    }
+    // {verb} must be "items" or "help"
+    else if (nPlaceMatches == 0 && nItemMatches == 0 && nVerbMatches == 1) {
+        if (verbMatches[0].compare("items") == 0 || verbMatches[0].compare("help") == 0) {
+            result.push_back(verbMatches[0]);
+        }
+        else {
+            printf("A verb must be used with a place or a item except for \"help\" and \"items\".\n");
+            printf("The verb, %s, was used instead.\n", verbMatches[0].c_str());
+        }
+        return result;
+    }
+    // {verb, item}
+    else if (nVerbMatches == 1 && nItemMatches == 1) {
+        result.push_back(verbMatches[0]);
+        result.push_back(itemMatches[0]);
+        return result;
+    }
+    // {verb, place}
+    else if (nVerbMatches == 1 && nPlaceMatches == 1) {
+        result.push_back(verbMatches[0]);
+        result.push_back(placeMatches[0]);
+        return result;
+    }
+    // no valid matches. return empty vector.
+    printf("No valid matches found.\n");
     return result;
 }
 
 //int main(int argc, const char * argv[]) {
+//    int i;
+//    std::vector<std::string> result;
 //
-//    std::string text = "Inspect ze castle map";
+//    std::string validVerbs[16] = {   "inspect", "open", "shoot", "jump",
+//                                     "tie", "climb", "drink", "read", "items",
+//                                     "move", "go", "move", "take", "help",
+//                                     "look", "look at" };
 //
-//    std::vector<std::string> result = textParse(text);
-//    std::cout << result.at(0) << " " << result.at(1) << std::endl;
+//    std::vector<std::string> words;
+//    words.push_back("look");
+//    words.push_back("look");
+//    words.push_back("at");
+//    words.push_back("the");
+//    words.push_back("lamp");
 //
+//    printf("getMatch results...\n");
+//
+//    result = getMatch(words, validVerbs, 16);
+//
+//    for (i = 0; i < result.size(); i++) {
+//        printf("%s\n", result[i].c_str());
+//    }
+//
+//    std::string text = "look at all the ways of knighthood book from over there";
+//
+//    printf("\ntextParse results...\n");
+//
+//    result = textParse(text);
+//
+//    for (i = 0; i < result.size(); i++) {
+//        printf("%s\n", result[i].c_str());
+//    }
 //
 //    return 0;
 //}
