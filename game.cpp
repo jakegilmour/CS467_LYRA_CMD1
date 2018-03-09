@@ -307,6 +307,22 @@ int useItem(string itemName, struct inventory &playerInventory, vector <struct r
 			}
 			
 		}
+		else if (playerInventory.items[itemInInv].usedInRoom == 100)
+		{
+			//sword
+			if (currentRoomNum == 1 || currentRoomNum == 4 || currentRoomNum == 12)
+			{
+				cout << playerInventory.items[itemInInv].useText1 << endl;
+				rooms[currentRoomNum].roomState = 2;
+				return 1;
+			}
+			else
+			{
+				cout << "Using that here doesn't seem wise" << endl;
+				return 0;
+			}
+			
+		}
 		else if (playerInventory.items[itemInInv].usedInRoom == 60)
 		{
 			//bow and arrow
@@ -520,6 +536,44 @@ int itemIsInRoom(string itemName, vector <struct room> &rooms, int currentRoomNu
 }
 
 /*
+Function: printLongRoomDescription()
+Args: vector <struct room> rooms, int currentRoomNum
+Prints the long form description of the room
+
+*/
+void printLongRoomDescription(vector <struct room> &rooms, int currentRoomNum)
+{
+	
+
+	cout << rooms[currentRoomNum].description1 << endl;
+
+	cout << "In this room you notice a ";
+	
+	for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
+	{
+		if (i == 0)
+		{
+			cout << rooms[currentRoomNum].items[i].name;
+		}
+		else
+		{
+			cout << ", a " << rooms[currentRoomNum].items[i].name;
+		}
+		
+		
+	}
+	
+	cout << endl;
+	
+	
+}
+
+
+
+
+
+
+/*
 Function: printRoomDescription()
 Args: vector <struct room> rooms, int currentRoomNum
 Prints the description of the room the player is in based on room state
@@ -576,32 +630,28 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 {
 	
 	int currentRoomNum = 0;
-	//vector <string> commands[3];
+	
 	string userInput;
-	string commands[3];
+	vector <string> commands;
 	
 	printRoomDescription(rooms, currentRoomNum);
 	
 	rooms[0].roomState = 1;
 	
 	while(1){
-		//cin >> userInput;
-		//commands =textParse(userInput);
+		getline(cin, userInput);
 		
-		string input1;
-		string input2;
-		getline(cin, input1);
-		getline(cin, input2);
-		commands[0] = input1;
-		commands[1] = input2;
-		input1.erase(input1.length() - 1);
-		input2.erase(input2.length() - 1);
+		
+		commands = textParse(userInput);
+		
+		
+		
 
 		
 			
 		if (commands[0] == "look")
 		{
-			printRoomDescription(rooms, currentRoomNum);
+			void printLongRoomDescription(rooms, currentRoomNum);
 			
 		}
 		else if (commands[0] == "inspect")
@@ -612,8 +662,20 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 		else if (commands[0] == "go")
 		{
 
-			if (rooms[currentRoomNum].door == 1){				
-				if (commands[1] == "next")
+			if (rooms[currentRoomNum].door == 1){		
+				if (commands[1] == "door")
+				{
+					if (rooms[currentRoomNum - 1].door == 1)
+					{
+						cout << "You need to be more specific.  There is more than one door here." << endl;
+					}
+					else
+					{
+						goToNextRoom(rooms, currentRoomNum);
+					}
+					
+				}			
+				else if (commands[1] == "next")
 				{
 					goToNextRoom(rooms, currentRoomNum);
 					
@@ -688,7 +750,13 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 			}
 			else
 			{
-				if (commands[1] == "tunnel" || commands[1] == "staircase")
+				if (commands[1] == "door")
+				{
+					goToPrevRoom(currentRoomNum);
+					printRoomDescription(rooms, currentRoomNum);
+					
+				}	
+				else if (commands[1] == "tunnel" || commands[1] == "staircase")
 				{
 					goToNextRoom(rooms, currentRoomNum);
 					
@@ -812,7 +880,11 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 			}
 
 		}
-		else if (commands[0] == "shoot" && commands[1] == "bow")
+		else if (commands[0] == "shoot king" && commands[1] == "bow")
+		{
+			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+		}
+		else if (commands[0] == "shoot guard" && commands[1] == "bow")
 		{
 			useItem(commands[1], playerInventory, rooms, currentRoomNum);
 		}
@@ -829,6 +901,18 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 			useItem(commands[1], playerInventory, rooms, currentRoomNum);
 		}
 		else if (commands[0] == "tie" && commands[1] == "rope")
+		{
+			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+		}
+		else if (commands[0] == "swing" && commands[1] == "sword")
+		{
+			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+		}
+		else if (commands[0] == "stab guard" && commands[1] == "sword")
+		{
+			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+		}
+		else if (commands[0] == "shine" && commands[1] == "lamp")
 		{
 			useItem(commands[1], playerInventory, rooms, currentRoomNum);
 		}

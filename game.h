@@ -61,6 +61,7 @@ struct inventory
 };
 
 void inspectItem(string itemName, vector <struct room> &rooms, struct inventory &playerInventory, int currentRoomNum);
+void printLongRoomDescription(vector <struct room> &rooms, int currentRoomNum);
 void initializeRooms(vector <struct room> &rooms);
 struct inventory initializeInventory();
 int hasItem(string itemName, struct inventory &playerInventory);
