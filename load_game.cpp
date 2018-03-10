@@ -295,32 +295,42 @@ void load_game(int &currentRoomNum, struct inventory &playerInventory, vector <s
         }
         
         if (struct_item_counter == 0) {
-            temp_item.name = mydata[data_index];
+            temp_item.itemNum = std::stoi(mydata[data_index]);
             data_index++;
             struct_item_counter++;
         }
         else if (struct_item_counter == 1) {
-            temp_item.description = mydata[data_index];
+            temp_item.name = mydata[data_index];
             data_index++;
             struct_item_counter++;
         }
         else if (struct_item_counter == 2) {
-            temp_item.usedInRoom = std::stoi(mydata[data_index]);
+            temp_item.description = mydata[data_index];
             data_index++;
             struct_item_counter++;
         }
         else if (struct_item_counter == 3) {
-            temp_item.canTake = std::stoi(mydata[data_index]);
+            temp_item.usedInRoom = std::stoi(mydata[data_index]);
             data_index++;
             struct_item_counter++;
         }
         else if (struct_item_counter == 4) {
-            temp_item.roomNum = std::stoi(mydata[data_index]);
+            temp_item.canTake = std::stoi(mydata[data_index]);
             data_index++;
             struct_item_counter++;
         }
         else if (struct_item_counter == 5) {
-            temp_item.command = mydata[data_index];
+            temp_item.roomNum = std::stoi(mydata[data_index]);
+            data_index++;
+            struct_item_counter++;
+        }
+        else if (struct_item_counter == 6) {
+            temp_item.useText1 = mydata[data_index];
+            data_index++;
+            struct_item_counter++;
+        }
+        else if (struct_item_counter == 7) {
+            temp_item.useText2 = mydata[data_index];
             data_index++;
             struct_item_counter++;
         }
@@ -378,32 +388,42 @@ void load_game(int &currentRoomNum, struct inventory &playerInventory, vector <s
                 }
                 
                 if (struct_item_counter == 0) {
-                    temp_item.name = mydata[data_index];
+                    temp_item.itemNum = std::stoi(mydata[data_index]);
                     data_index++;
                     struct_item_counter++;
                 }
                 else if (struct_item_counter == 1) {
-                    temp_item.description = mydata[data_index];
+                    temp_item.name = mydata[data_index];
                     data_index++;
                     struct_item_counter++;
                 }
                 else if (struct_item_counter == 2) {
-                    temp_item.usedInRoom = std::stoi(mydata[data_index]);
+                    temp_item.description = mydata[data_index];
                     data_index++;
                     struct_item_counter++;
                 }
                 else if (struct_item_counter == 3) {
-                    temp_item.canTake = std::stoi(mydata[data_index]);
+                    temp_item.usedInRoom = std::stoi(mydata[data_index]);
                     data_index++;
                     struct_item_counter++;
                 }
                 else if (struct_item_counter == 4) {
-                    temp_item.roomNum = std::stoi(mydata[data_index]);
+                    temp_item.canTake = std::stoi(mydata[data_index]);
                     data_index++;
                     struct_item_counter++;
                 }
                 else if (struct_item_counter == 5) {
-                    temp_item.command = mydata[data_index];
+                    temp_item.roomNum = std::stoi(mydata[data_index]);
+                    data_index++;
+                    struct_item_counter++;
+                }
+                else if (struct_item_counter == 6) {
+                    temp_item.useText1 = mydata[data_index];
+                    data_index++;
+                    struct_item_counter++;
+                }
+                else if (struct_item_counter == 7) {
+                    temp_item.useText2 = mydata[data_index];
                     data_index++;
                     struct_item_counter++;
                 }
@@ -433,6 +453,36 @@ void load_game(int &currentRoomNum, struct inventory &playerInventory, vector <s
         }
         else if (struct_room_counter == 6) {
             temp_room.description3 = mydata[data_index];
+            data_index++;
+            struct_room_counter++;
+        }
+        else if (struct_room_counter == 7) {
+            temp_room.prevRoom = std::stoi(mydata[data_index]);
+            data_index++;
+            struct_room_counter++;
+        }
+        else if (struct_room_counter == 8) {
+            temp_room.nextRoom = std::stoi(mydata[data_index]);
+            data_index++;
+            struct_room_counter++;
+        }
+        else if (struct_room_counter == 9) {
+            temp_room.door = std::stoi(mydata[data_index]);
+            data_index++;
+            struct_room_counter++;
+        }
+        else if (struct_room_counter == 10) {
+            temp_room.nextDoor = mydata[data_index];
+            data_index++;
+            struct_room_counter++;
+        }
+        else if (struct_room_counter == 11) {
+            temp_room.prevDoor = mydata[data_index];
+            data_index++;
+            struct_room_counter++;
+        }
+        else if (struct_room_counter == 12) {
+            temp_room.hint = mydata[data_index];
             data_index++;
             struct_room_counter++;
         }

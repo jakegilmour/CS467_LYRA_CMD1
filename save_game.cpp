@@ -38,12 +38,14 @@ void write_to_file(std::string fname, std::string dt, int currentRoomNum, struct
     
     for (i = 0; i < playerInventory.numItems; i++) {
         afile << "start item" << '\n';
+        afile << playerInventory.items[i].itemNum << '\n';
         afile << playerInventory.items[i].name << '\n';
         afile << playerInventory.items[i].description << '\n';
         afile << playerInventory.items[i].usedInRoom << '\n';
         afile << playerInventory.items[i].canTake << '\n';
         afile << playerInventory.items[i].roomNum << '\n';
-        afile << playerInventory.items[i].command << '\n';
+        afile << playerInventory.items[i].useText1 << '\n';
+        afile << playerInventory.items[i].useText2 << '\n';
         afile << "end item" << '\n';
     }
     
@@ -62,12 +64,14 @@ void write_to_file(std::string fname, std::string dt, int currentRoomNum, struct
         
         for (k = 0; k < aroom.items.size(); k++) {
             afile << "start item" << '\n';
+            afile << aroom.items[k].itemNum << '\n';
             afile << aroom.items[k].name << '\n';
             afile << aroom.items[k].description << '\n';
             afile << aroom.items[k].usedInRoom << '\n';
             afile << aroom.items[k].canTake << '\n';
             afile << aroom.items[k].roomNum << '\n';
-            afile << aroom.items[k].command << '\n';
+            afile << aroom.items[k].useText1 << '\n';
+            afile << aroom.items[k].useText2 << '\n';
             afile << "end item" << '\n';
         }
         
@@ -78,6 +82,12 @@ void write_to_file(std::string fname, std::string dt, int currentRoomNum, struct
         afile << aroom.description1 << '\n';
         afile << aroom.description2 << '\n';
         afile << aroom.description3 << '\n';
+        afile << aroom.prevRoom << '\n';
+        afile << aroom.nextRoom << '\n';
+        afile << aroom.door << '\n';
+        afile << aroom.nextDoor << '\n';
+        afile << aroom.prevDoor << '\n';
+        afile << aroom.hint << '\n';
         
         afile << "end room" << '\n';
     }
@@ -369,19 +379,23 @@ void save_game(int currentRoomNum, struct inventory playerInventory, vector <str
 //    room rm1, rm2;
 //
 //    // make 2 items to test
+//    item1.itemNum = 7;
 //    item1.name = "Item 1";
 //    item1.description = "This is an Item 1 description.";
 //    item1.usedInRoom = 1;
 //    item1.canTake = 1;
 //    item1.roomNum = 7;
-//    item1.command = "go";
+//    item1.useText1 = "go";
+//    item1.useText2 = "popcorn";
 //
+//    item2.itemNum = 6;
 //    item2.name = "Item 2";
 //    item2.description = "This is an Item 2 description.";
 //    item2.usedInRoom = 0;
 //    item2.canTake = 0;
 //    item2.roomNum = 5;
-//    item2.command = "climb";
+//    item2.useText1 = "climb";
+//    item2.useText2 = "ball game";
 //
 //    // setup playerInventory
 //    playerInventory.numItems = 2;
@@ -397,6 +411,12 @@ void save_game(int currentRoomNum, struct inventory playerInventory, vector <str
 //    rm1.description1 = "This is description 1";
 //    rm1.description2 = "This is description 2";
 //    rm1.description3 = "This is description 3";
+//    rm1.prevRoom = 3;
+//    rm1.nextRoom = 4;
+//    rm1.door = 12;
+//    rm1.nextDoor = "large door";
+//    rm1.prevDoor = "hey door";
+//    rm1.hint = "helpful hint";
 //
 //    rm2.name = "Room 2";
 //    rm2.items.push_back(item2);
@@ -406,6 +426,13 @@ void save_game(int currentRoomNum, struct inventory playerInventory, vector <str
 //    rm2.description1 = "This is description 1-2";
 //    rm2.description2 = "This is description 2-2";
 //    rm2.description3 = "This is description 3-2";
+//    rm2.prevRoom = 5;
+//    rm2.nextRoom = 8;
+//    rm2.door = 14;
+//    rm2.nextDoor = "ok door";
+//    rm2.prevDoor = "later door";
+//    rm2.hint = "a hint";
+//
 //
 //    rooms.push_back(rm1);
 //    rooms.push_back(rm2);
