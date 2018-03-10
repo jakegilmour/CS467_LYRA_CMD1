@@ -23,6 +23,7 @@ void print_vector(std::vector<std::string> avector) {
 std::vector<std::string> getMatch(std::vector<std::string> words, std::string array[], int size)
 {
     int i, k, limit;
+    int lastEle = int(words.size() - 1);
     std::string catword, aword, valid_word, next_word, dbl_word, trip_word, quad_word, prev_word;
     std::vector<std::string> true_words; // holds concatenated valid words and valid singles
     
@@ -32,57 +33,41 @@ std::vector<std::string> getMatch(std::vector<std::string> words, std::string ar
             aword = words.at(i);
             valid_word = array[k];
             if (aword.compare(valid_word) == 0) {
-                // special case for "look" and "look at"
-                if (aword.compare("look") == 0) {
-                    // if it's not the last element. since last element has no next element.
-                    if (i != words.size() - 1) {
-                        next_word = words.at(i+1);
-                        catword = aword + " " + next_word;
-                        // ignore "look at" it'll be found in the next loop below
-                        if (catword.compare("look at") == 0) {
-                            continue;
-                        }
-                        // add only "look"
-                        else { true_words.push_back(aword); }
-                    }
-                    // add "look" when it's the last element
-                    else {
-                        true_words.push_back(aword);
-                    }
-                }
-                // special case for "dungeon window" and "window", "sleeping guard" and "guard"
-                else if ( aword.compare("guard") == 0 || aword.compare("window") == 0 ) {
-                    // if it's not the first element. since last element has no prev element.
+                // special case double concatenated words. check prev word.
+                if ( aword.compare("guard") == 0 || aword.compare("window") == 0 || aword.compare("door") == 0 || aword.compare("food") == 0 ) {
+                    // if it's not the first element. since last element has no previous element.
                     if (i != 0) {
                         prev_word = words.at(i-1);
                         catword = prev_word + " " + aword;
-                        // ignore "dungeon window" or "sleeping guard" it'll be found in the next loop below
-                        if (catword.compare("dungeon window") == 0 || catword.compare("sleeping guard") == 0) {
+                        // ignore these strings it'll be found in the next loop below
+                        if ( catword.compare("dungeon window") == 0 || catword.compare("cell door") == 0 || catword.compare("double door") == 0 ||catword.compare("gilded door") == 0 || catword.compare("large door") == 0 || catword.compare("main door") == 0 || catword.compare("old door") == 0 || catword.compare("rotten food") == 0 || catword.compare("royal door") == 0 || catword.compare("shoot guard") == 0 || catword.compare("sleeping guard") == 0 || catword.compare("stab guard") == 0 || catword.compare("vaulted door") == 0 || catword.compare("wooden door") == 0 ) {
                             continue;
                         }
-                        // add only "guard" or "window"
-                        else { true_words.push_back(aword); }
                     }
-                    // add "guard" or "window" when it's the last element
-                    else { true_words.push_back(aword); }
-                    
                 }
-                // add a regular valid word
-                else {
-                    // don't pushback "dungeon" if it is followed by "window"
-                    if ( aword.compare("dungeon") == 0 && i != words.size() - 1 ) {
-                        next_word = words.at(i+1);
-                        catword = aword + " " + next_word;
-                        if (catword.compare("dungeon window") != 0) {
-                            true_words.push_back(aword);
+                // special case double concatenated words. check next word.
+                if ( (aword.compare("dungeon") == 0 || aword.compare("bow") == 0 || aword.compare("guard") == 0 || aword.compare("look") == 0 || aword.compare("throne") == 0 || aword.compare("treasure") == 0 ) && (i < lastEle) ) {
+                    next_word = words[i+1];
+                    // check for triple words
+                    if (i < lastEle - 1 ) {
+                        catword = aword + " " + next_word + " " + words[i+2];
+                        if ( catword.compare("bow and arrow") == 0 || catword.compare("guard duty roster") == 0 ) {
+                            continue;
                         }
                     }
-                    else {
-                        true_words.push_back(aword);
+                    
+                    // check for double word
+                    catword = aword + " " + next_word;
+                    // continue. append these in the next loop that checks for multiple words.
+                    if ( catword.compare("dungeon window") == 0 || catword.compare("dungeon key") == 0 || catword.compare("guard room") == 0 || catword.compare("look at") == 0 || catword.compare("throne room") == 0 || catword.compare("treasure chest") == 0 || catword.compare("treasure room") == 0 || catword.compare("treasure sack") == 0 ) {
+                        continue;
                     }
                 }
+                // pushback the single valid word
+                true_words.push_back(aword);
             }
         }
+        
     }
     
     // look for possible words with spaces such as "dungeon key"
@@ -122,8 +107,8 @@ std::vector<std::string> getMatch(std::vector<std::string> words, std::string ar
     Args - a std::string
     Returns - std::vector {verb, item}. Verb and item are lower case strings. Verbs "go" and "move" are
     associated with locations and returns {verb, location}. Some verbs are not associated with items or
-    locations and just returns {verb} such as "items" and "help". When only a location is selected
-    {"go", location} is returned.
+    locations and just returns {verb} such as "items", "help", and "hint". "look" can be used with a item, location, or stand-alone
+    When only a location is selected {"go", location} is returned.
  */
 std::vector<std::string> textParse(std::string astring)
 {
@@ -131,37 +116,32 @@ std::vector<std::string> textParse(std::string astring)
     std::vector<std::string> result;
     std::vector<std::string> words;
     std::string temp;
-    const int verbsSize = 16;
-    const int itemsSize = 44;
+    const int verbsSize = 21;
+    const int itemsSize = 45;
     const int placesSize = 30;
 
-    std::string validVerbs[verbsSize] = {   "inspect", "open", "shoot", "jump",
-                                            "tie", "climb", "drink", "read", "items",
-                                            "move", "go", "move", "take", "help",
-                                            "look", "look at" };
+    std::string validVerbs[verbsSize] = {   "climb", "drink", "go", "help", "hint",
+                                            "inspect", "items", "jump", "look", "look at",
+                                            "move", "open", "read", "shine", "shoot guard",
+                                            "shoot king", "stab guard", "swing", "take", "tie",
+                                            "use" };
 
-    std::string validItems[itemsSize] = {   "dungeon key", "castle map", "lamp", "rope", "food",
-                                            "window", "sword", "treasure sack", "mead", "door",
-                                            "guard", "flour", "dungeon window", "dragon tales encyclopedia", "rat",
-                                            "guard duty roster", "suit of armor", "pigeons", "parcel", "shield",
-                                            "spear", "barrel", "spider", "bed", "trophy",
-                                            "toilet", "crack in the wall", "ways of knighthood book", "cook book", "fruit basket",
-                                            "main door", "gold cup", "treasure chest", "holy book", "priest robes",
-                                            "bed", "rotten food", "table", "chair", "sleeping guard",
-                                            "king", "bow and arrow", "strange noise", "throne"
-        
-    };
+    std::string validItems[itemsSize] = {   "barrel", "bed", "bow", "bow and arrow", "castle map",
+                                            "chair", "cook book", "crack in the wall", "door", "dragon tales encyclopedia",
+                                            "dungeon key", "dungeon window", "flour", "food", "fruit basket",
+                                            "gold cup", "guard", "guard duty roster", "holy book", "king",
+                                            "lamp", "main door", "mead", "parcel", "pigeons",
+                                            "priest robes", "rat", "rope", "rotten food", "shield",
+                                            "sleeping guard", "spear", "spider", "strange noise",
+                                            "suit of armor", "sword", "table", "throne", "toilet",
+                                            "treasure chest", "treasure sack", "trophy", "ways of knighthood book", "window" };
 
-    std::string validPlaces[placesSize] = { "north", "east", "west", "south",
-                                            "dungeon", "treasure", "basement",
-                                            "throne", "great hall", "chamber",
-                                            "solar", "lavatory", "kitchen",
-                                            "pantry", "guard", "chapel", "cellar",
-                                            "arms", "dovecote", "cell door",
-                                            "wooden door", "large door", "window",
-                                            "staircase", "old door", "tunnel",
-                                            "vaulted door", "gilded door", "double door",
-                                            "royal door" };
+    std::string validPlaces[placesSize] = { "arms", "basement", "cell door", "cellar", "chamber",
+                                            "chapel", "double door", "dovecote", "dungeon", "east",
+                                            "gilded door", "great hall", "guard room", "kitchen", "large door",
+                                            "lavatory", "north", "old door", "pantry", "royal door",
+                                            "solar", "south", "staircase", "throne room", "treasure room",
+                                            "tunnel", "vaulted door", "west", "window", "wooden door" };
 
     // add null bit if it doesn't have one
     if (astring.length() - 1 != '\0') {
@@ -234,14 +214,14 @@ std::vector<std::string> textParse(std::string astring)
         result.push_back(placeMatches[0]);
         return result;
     }
-    // {verb} must be "items" or "help"
+    // {verb}
     else if (nPlaceMatches == 0 && nItemMatches == 0 && nVerbMatches == 1) {
-        if (verbMatches[0].compare("items") == 0 || verbMatches[0].compare("help") == 0) {
+        if (verbMatches[0].compare("items") == 0 || verbMatches[0].compare("help") == 0 || verbMatches[0].compare("hint") == 0 || verbMatches[0].compare("look") == 0) {
             result.push_back(verbMatches[0]);
         }
         else {
-            printf("A verb must be used with a place or a item except for \"help\" and \"items\".\n");
-            printf("The verb, %s, was used instead.\n", verbMatches[0].c_str());
+            printf("No valid items or verbs found. \nA verb must be used with a place or a item except for \"help\" and \"items\".\n");
+            printf("\"%s\" was used as a stand-alone verb instead.\n", verbMatches[0].c_str());
         }
         return result;
     }
@@ -286,12 +266,8 @@ std::vector<std::string> textParse(std::string astring)
 ////        printf("%s\n", result[i].c_str());
 ////    }
 //
-//    // inspect lamp
-//    // dungeon window
-//    // window
-//    // inspect sleeping guard
-//    
-//    std::string text = "inspect sleeping guard";
+//
+//    std::string text = "hint dungeon key";
 //
 //    printf("\ntextParse results...\n");
 //
