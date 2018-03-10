@@ -7,3 +7,4 @@ You've been out of here before.  You climbed down the North facing window.  To t
 0
 window
 large door
+The window is too high to jump from, but maybe there is something that you could tie to the window to climb down. 

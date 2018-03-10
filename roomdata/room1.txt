@@ -7,3 +7,4 @@ The basement is cold and muggy but you know your way through because you've been
 1
 wooden door
 cell door
+It's very dark in the basement.  You might be better able to move forward if you could see.

@@ -22,73 +22,6 @@ int main()
 	
 	playGame(rooms, playerInventory);
 	
-	
-	
-	for (int i = 0; i < NUMROOMS; i++)
-	{
-		
-		cout << endl;
-		cout << "**** ROOM # " << i << " ****" << endl;
-		cout << rooms[i].name << endl;
-		cout << rooms[i].items[0].name << endl;
-		cout << rooms[i].items[1].name << endl;
-		cout << rooms[i].items[2].name << endl;
-		cout << rooms[i].description1  << endl;
-		cout << rooms[i].description2  << endl;
-		cout << rooms[i].description3  << endl;
-		
-	}
-	
-
-	
-	string window = "dungeon key";
-	int test1 = itemIsInRoom(window, rooms, 0);
-	int test2 = itemIsInRoom("window1", rooms, 0);
-	
-	cout << window.length() << " " << rooms[0].items[0].name.length() << endl;
-	
-	cout << endl;
-	cout << "***** Testing itemIsInRoom ******" << endl;
-	cout << "Expected value for first test = 0.  Actual = " << test1 << endl;
-	cout << "Expected value for second test = -1.  Actual = " << test2 << endl;
-	
-	
-	playerInventory.items[0].name = "test item";
-	playerInventory.numItems = 1;
-	
-	
-	
-	cout << "***** Testing hasItem ******" << endl;
-	cout << "Expected value for first test = 0.  Actual = " << hasItem("test item", playerInventory) << endl;
-	cout << "Expected value for second test = -1.  Actual = " << hasItem("test item   2323", playerInventory) << endl;
-	
-	cout << "***** Testing inspectItem ******" << endl;
-	cout << "Testing item that is inspectable in inventory ";
-	cout << endl;
-	inspectItem("test item", rooms, playerInventory, 4);
-	cout << "Testing item that is inspectable in room ";
-	cout << endl;
-	inspectItem(window, rooms, playerInventory, 0);
-	cout << "Testing item that cannot be inspected";
-	cout << endl;
-	inspectItem(window, rooms, playerInventory, 4);
-	cout << endl;
-	
-	takeItem("dungeon key", playerInventory, rooms, 0);
-	test1 = itemIsInRoom(window, rooms, 0);
-	cout << "Expected value for second test = -1.  Actual = " << test1 << endl;
-	
-	cout << " item 1 in inv " << playerInventory.items[1].name << endl;
-	
-	dropItem("dungeon key", playerInventory, rooms, 0);
-	test1 = itemIsInRoom(window, rooms, 0);
-	cout << rooms[0].items[0].name << endl;
-	cout << " item 1 in inv " << playerInventory.items[1].name << endl;
-	cout << "Expected value for first test = 0.  Actual = " << test1 << endl;
-	
-	
-
-	return 0;
 	return 0;
 }
 
@@ -444,10 +377,15 @@ void importRoomData(vector <struct room> &rooms, int roomNum)
 				rooms[roomNum].nextDoor = fileLine;
 				rooms[roomNum].nextDoor.erase(rooms[roomNum].nextDoor.length() - 1);
 			}
-			else if (lineCounter == 8)
+			else if (lineCounter == 9)
 			{
 				rooms[roomNum].prevDoor = fileLine;
 				rooms[roomNum].prevDoor.erase(rooms[roomNum].prevDoor.length() - 1);
+			}
+			else if (lineCounter == 10)
+			{
+				rooms[roomNum].hint = fileLine;
+				rooms[roomNum].hint.erase(rooms[roomNum].hint.length() - 1);
 			}
 			
 			lineCounter++;
@@ -547,13 +485,15 @@ void printLongRoomDescription(vector <struct room> &rooms, int currentRoomNum)
 
 	cout << rooms[currentRoomNum].description1 << endl;
 
-	cout << "In this room you notice a ";
+	cout << "A few items in particular catch your interest:" << endl;
 	
 	for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
 	{
 		if (i == 0)
 		{
+			
 			cout << rooms[currentRoomNum].items[i].name;
+			
 		}
 		else
 		{
@@ -597,23 +537,31 @@ void printRoomDescription(vector <struct room> &rooms, int currentRoomNum)
 
 	}
 	
-	cout << "In this room you notice a ";
 	
-	for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
-	{
-		if (i == 0)
-		{
-			cout << rooms[currentRoomNum].items[i].name;
-		}
-		else
-		{
-			cout << ", a " << rooms[currentRoomNum].items[i].name;
-		}
+		cout << "A few items in particular catch your interest:" << endl;
 		
-		
-	}
-	
-	cout << endl;
+		for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
+		{
+			if (i == 0)
+			{
+				
+				if (currentRoomNum == 0 && rooms[currentRoomNum].items[i].name == "dungeon key")
+				{
+				}
+				else
+				{
+					cout << rooms[currentRoomNum].items[i].name << endl;
+				}
+
+			}
+			else
+			{
+				cout << rooms[currentRoomNum].items[i].name << endl;
+			}
+			
+			
+		}
+
 	
 	
 }
@@ -648,10 +596,19 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 		
 
 		
-			
-		if (commands[0] == "look")
+		if (commands.size() == 0)
 		{
-			void printLongRoomDescription(rooms, currentRoomNum);
+			cout << "Please enter a new command" << endl;
+
+		}	
+		else if (commands[0] == "hint")
+		{
+			cout << rooms[currentRoomNum].hint << endl;
+			
+		}
+		else if (commands[0] == "look")
+		{
+			printLongRoomDescription(rooms, currentRoomNum);
 			
 		}
 		else if (commands[0] == "inspect")
@@ -892,7 +849,11 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 		{
 			useItem(commands[1], playerInventory, rooms, currentRoomNum);
 		}
-		else if (commands[0] == "jump" && commands[1] == "window")
+		else if (commands[0] == "jump" && commands[1] == "window" && currentRoomNum == 7)
+		{
+			goToNextRoom(rooms, currentRoomNum);
+		}
+		else if (commands[0] == "climb" && currentRoomNum == 3 && (commands[1] == "window" || commands[1] == "rope") )
 		{
 			goToNextRoom(rooms, currentRoomNum);
 		}
@@ -918,7 +879,7 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 		}
 		else
 		{
-			/*Special handler verbs here */
+			
 			
 			
 			

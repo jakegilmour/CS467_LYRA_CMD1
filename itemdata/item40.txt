@@ -1,6 +1,6 @@
 40
 sleeping guard
-The guard is sound asleep.  You notice some keys on his belt.  Better not wake him up.
+The guard is sound asleep.  You notice some keys on his belt.  One of those keys appears to be the dungeon key.  Better not wake him up.
 0
 0
 0

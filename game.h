@@ -46,6 +46,7 @@ struct room
 	int door;
 	string nextDoor;
 	string prevDoor;
+	string hint;
 
 	
 };

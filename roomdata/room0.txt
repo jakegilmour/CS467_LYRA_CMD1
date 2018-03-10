@@ -7,3 +7,4 @@ The dungeon is open.  You've been out of here before.  Did you forget something 
 1
 cell door
 none
+If the cell door is locked, maybe there is a way you could open it.

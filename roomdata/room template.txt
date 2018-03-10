@@ -5,4 +5,10 @@ item3 name
 state1 description
 state2 description
 state3 description
+int prevroomdirection
+int nextroomdirection
+int door
+string nextdoor
+string prevdoor
+string hint
 
