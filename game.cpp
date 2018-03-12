@@ -485,7 +485,7 @@ void printLongRoomDescription(vector <struct room> &rooms, int currentRoomNum)
 
 	cout << rooms[currentRoomNum].description1 << endl;
 
-	cout << "A few items in particular catch your interest:" << endl;
+	cout << "In this room you notice a ";
 	
 	for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
 	{
@@ -618,179 +618,195 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 		}
 		else if (commands[0] == "go")
 		{
-
-			if (rooms[currentRoomNum].door == 1){		
-				if (commands[1] == "door")
-				{
-					if (rooms[currentRoomNum - 1].door == 1)
-					{
-						cout << "You need to be more specific.  There is more than one door here." << endl;
-					}
-					else
-					{
-						goToNextRoom(rooms, currentRoomNum);
-					}
-					
-				}			
-				else if (commands[1] == "next")
+				
+			if (currentRoomNum == 0)
+			{
+				
+				if (commands[1] == "next" || commands[1] == rooms[currentRoomNum].nextDoor || commands[1] == "east")
 				{
 					goToNextRoom(rooms, currentRoomNum);
-					
-				}
-				else if (commands[1] == "prev")
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-				}
-				else if (commands[1] == rooms[currentRoomNum + 1].name)
-				{
-					goToNextRoom(rooms, currentRoomNum);
-					
-				}
-				else if (commands[1] == rooms[currentRoomNum - 1].name)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-					
-				}
-				else if (commands[1] == rooms[currentRoomNum].nextDoor)
-				{
-					goToNextRoom(rooms, currentRoomNum);
-					
-				}
-				else if (commands[1] == rooms[currentRoomNum].prevDoor)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-					
-				}
-				else if (commands[1] == "north" && rooms[currentRoomNum].prevRoom == 0)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "east" && rooms[currentRoomNum].prevRoom == 1)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "south" && rooms[currentRoomNum].prevRoom == 3)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "west" && rooms[currentRoomNum].prevRoom == 2)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "north" && rooms[currentRoomNum].nextRoom == 0)
-				{
-					goToNextRoom(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "east" && rooms[currentRoomNum].nextRoom == 1)
-				{
-					goToNextRoom(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "south" && rooms[currentRoomNum].nextRoom == 3)
-				{
-					goToNextRoom(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "west" && rooms[currentRoomNum].nextRoom == 2)
-				{
-					goToNextRoom(rooms, currentRoomNum);
+						
 				}
 				else
 				{
 					cout << "It seems like you are trying to go the wrong way" << endl;
 				}
+
 			}
 			else
 			{
-				if (commands[1] == "door")
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-					
-				}	
-				else if (commands[1] == "tunnel" || commands[1] == "staircase")
-				{
-					goToNextRoom(rooms, currentRoomNum);
-					
-				}
-				else if (commands[1] == "next")
-				{
-					cout << "The location of the next room does not seem obvious from here.  You may need to take an unconventional route" << endl;
-				}
-				else if (commands[1] == "prev")
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-				}
-				else if (commands[1] == rooms[currentRoomNum + 1].name)
-				{
-					goToNextRoom(rooms, currentRoomNum);
-					
-				}
-				else if (commands[1] == rooms[currentRoomNum - 1].name)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-					
-				}
-				else if (commands[1] == rooms[currentRoomNum].nextDoor)
-				{
-					goToNextRoom(rooms, currentRoomNum);
-					
-				}
-				else if (commands[1] == rooms[currentRoomNum].prevDoor)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-					
-				}
-				else if (commands[1] == "north" && rooms[currentRoomNum].prevRoom == 0)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "east" && rooms[currentRoomNum].prevRoom == 1)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "south" && rooms[currentRoomNum].prevRoom == 3)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "west" && rooms[currentRoomNum].prevRoom == 2)
-				{
-					goToPrevRoom(currentRoomNum);
-					printRoomDescription(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "north" && rooms[currentRoomNum].nextRoom == 0)
-				{
-					goToNextRoom(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "east" && rooms[currentRoomNum].nextRoom == 1)
-				{
-					goToNextRoom(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "south" && rooms[currentRoomNum].nextRoom == 3)
-				{
-					goToNextRoom(rooms, currentRoomNum);
-				}
-				else if (commands[1] == "west" && rooms[currentRoomNum].nextRoom == 2)
-				{
-					goToNextRoom(rooms, currentRoomNum);
+				if (rooms[currentRoomNum].door == 1){		
+					if (commands[1] == "door")
+					{
+						if (rooms[currentRoomNum - 1].door == 1)
+						{
+							cout << "You need to be more specific.  There is more than one door here." << endl;
+						}
+						else
+						{
+							goToNextRoom(rooms, currentRoomNum);
+						}
+						
+					}			
+					else if (commands[1] == "next")
+					{
+						goToNextRoom(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == "prev")
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+					}
+					else if (commands[1] == rooms[currentRoomNum + 1].name)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == rooms[currentRoomNum - 1].name)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == rooms[currentRoomNum].nextDoor)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == rooms[currentRoomNum].prevDoor)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == "north" && rooms[currentRoomNum].prevRoom == 0)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "east" && rooms[currentRoomNum].prevRoom == 1)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "south" && rooms[currentRoomNum].prevRoom == 3)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "west" && rooms[currentRoomNum].prevRoom == 2)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "north" && rooms[currentRoomNum].nextRoom == 0)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "east" && rooms[currentRoomNum].nextRoom == 1)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "south" && rooms[currentRoomNum].nextRoom == 3)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "west" && rooms[currentRoomNum].nextRoom == 2)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+					}
+					else
+					{
+						cout << "It seems like you are trying to go the wrong way" << endl;
+					}
 				}
 				else
 				{
-					cout << "It seems like you are trying to go the wrong way" << endl;
+					if (commands[1] == "door")
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+						
+					}	
+					else if (commands[1] == "tunnel" || commands[1] == "staircase")
+					{
+						goToNextRoom(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == "next")
+					{
+						cout << "The location of the next room does not seem obvious from here.  You may need to take an unconventional route" << endl;
+					}
+					else if (commands[1] == "prev")
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+					}
+					else if (commands[1] == rooms[currentRoomNum + 1].name)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == rooms[currentRoomNum - 1].name)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == rooms[currentRoomNum].nextDoor)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == rooms[currentRoomNum].prevDoor)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == "north" && rooms[currentRoomNum].prevRoom == 0)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "east" && rooms[currentRoomNum].prevRoom == 1)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "south" && rooms[currentRoomNum].prevRoom == 3)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "west" && rooms[currentRoomNum].prevRoom == 2)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "north" && rooms[currentRoomNum].nextRoom == 0)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "east" && rooms[currentRoomNum].nextRoom == 1)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "south" && rooms[currentRoomNum].nextRoom == 3)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+					}
+					else if (commands[1] == "west" && rooms[currentRoomNum].nextRoom == 2)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+					}
+					else
+					{
+						cout << "It seems like you are trying to go the wrong way" << endl;
+					}
 				}
 			}
-			
 
 		}
 		else if (commands[0] == "take")

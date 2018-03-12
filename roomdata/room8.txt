@@ -7,3 +7,5 @@ You are in the Kitchen.  You have been here before.  To the South you see the sm
 1
 old door
 small door
+Maybe there is a way you can defeat the guard without getting too close...
+

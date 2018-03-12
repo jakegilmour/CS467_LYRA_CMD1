@@ -7,3 +7,5 @@ You are in the chapel. You have been here before.  Thereis a vaulted door to the
 1
 gilded door
 vaulted door
+It has seemed wise to use combat against some guards, but maybe there is another way around this guard.
+

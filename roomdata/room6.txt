@@ -7,4 +7,4 @@ You are in the Solar Room.  You have been here before.  To the West is the large
 1
 small door
 large door
-
+If there was a guard in your way, how could you get past him?

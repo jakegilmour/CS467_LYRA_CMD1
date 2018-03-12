@@ -7,3 +7,4 @@ You are in the Pantry.  You have been here before.  To the East you notice the s
 0
 small door
 tunnel
+There is a guard in your way, how can you defeat him?

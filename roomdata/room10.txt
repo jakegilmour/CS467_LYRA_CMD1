@@ -7,3 +7,5 @@ You are in the Treasure Room. You have been here before.  To the south is the sm
 1
 vaulted door
 small door
+If there is a guard in your way maybe there is something you can do to get by him.
+

@@ -7,3 +7,4 @@ You are in the Master Bed Chamber.  You have been here before.  To the South is 
 1
 double door
 gilded door
+It would be easier to find your way around this room if you could see.

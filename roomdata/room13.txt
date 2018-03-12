@@ -7,3 +7,4 @@ You are in the Great Hall.  To the East is the double door leading back to the M
 1
 royal door
 double door
+Getting too close to the guard doesn't seem wise.  Maybe there is another way around him.

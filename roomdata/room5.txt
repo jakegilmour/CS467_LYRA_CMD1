@@ -7,3 +7,4 @@ You've been through here before.  You see the door to the staircase to the Place
 1
 large door
 staircase
+If there was a guard in your way, how could you get past him?
