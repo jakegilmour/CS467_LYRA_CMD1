@@ -34,13 +34,13 @@ std::vector<std::string> getMatch(std::vector<std::string> words, std::string ar
             valid_word = array[k];
             if (aword.compare(valid_word) == 0) {
                 // special case double concatenated words. check prev word.
-                if ( aword.compare("guard") == 0 || aword.compare("window") == 0 || aword.compare("door") == 0 || aword.compare("food") == 0 ) {
+                if ( aword.compare("guard") == 0 || aword.compare("window") == 0 || aword.compare("door") == 0 || aword.compare("food") == 0 || aword.compare("sword") == 0 || aword.compare("king") == 0) {
                     // if it's not the first element. since last element has no previous element.
                     if (i != 0) {
                         prev_word = words.at(i-1);
                         catword = prev_word + " " + aword;
                         // ignore these strings it'll be found in the next loop below
-                        if ( catword.compare("dungeon window") == 0 || catword.compare("cell door") == 0 || catword.compare("double door") == 0 ||catword.compare("gilded door") == 0 || catword.compare("large door") == 0 || catword.compare("main door") == 0 || catword.compare("old door") == 0 || catword.compare("rotten food") == 0 || catword.compare("royal door") == 0 || catword.compare("shoot guard") == 0 || catword.compare("sleeping guard") == 0 || catword.compare("stab guard") == 0 || catword.compare("vaulted door") == 0 || catword.compare("wooden door") == 0 ) {
+                        if ( catword.compare("dungeon window") == 0 || catword.compare("cell door") == 0 || catword.compare("double door") == 0 ||catword.compare("gilded door") == 0 || catword.compare("large door") == 0 || catword.compare("main door") == 0 || catword.compare("old door") == 0 || catword.compare("rotten food") == 0 || catword.compare("royal door") == 0 || catword.compare("shoot guard") == 0 || catword.compare("slay guard") == 0 || catword.compare("sleeping guard") == 0 || catword.compare("stab guard") == 0 || catword.compare("vaulted door") == 0 || catword.compare("wooden door") == 0 || catword.compare("swing sword") == 0 || catword.compare("shoot king") == 0 || catword.compare("slay king") == 0) {
                             continue;
                         }
                     }
@@ -117,23 +117,24 @@ std::vector<std::string> textParse(std::string astring)
     std::vector<std::string> result;
     std::vector<std::string> words;
     std::string temp;
-    const int verbsSize = 21;
+    const int verbsSize = 25;
     const int itemsSize = 45;
     const int placesSize = 30;
 
     std::string validVerbs[verbsSize] = {   "climb", "drink", "go", "help", "hint",
                                             "inspect", "items", "jump", "look", "look at",
                                             "move", "open", "read", "shine", "shoot guard",
-                                            "shoot king", "stab guard", "swing", "take", "tie",
-                                            "use" };
+                                            "shoot king", "slay guard", "slay king",
+                                            "stab guard", "stab king", "swing sword", "take",
+                                            "tie", "unlock", "use" };
 
     std::string validItems[itemsSize] = {   "barrel", "bed", "bow", "bow and arrow", "castle map",
                                             "chair", "cook book", "crack in the wall", "door", "dragon tales encyclopedia",
                                             "dungeon key", "dungeon window", "flour", "food", "fruit basket",
                                             "gold cup", "guard", "guard duty roster", "holy book", "king",
-                                            "lamp", "main door", "mead", "parcel", "pigeons",
-                                            "priest robes", "rat", "rope", "rotten food", "shield",
-                                            "sleeping guard", "spear", "spider", "strange noise",
+                                            "lamp", "lock", "main door", "mead", "parcel",
+                                            "pigeons", "priest robes", "rat", "rope", "rotten food",
+                                            "shield", "sleeping guard", "spear", "spider", "strange noise",
                                             "suit of armor", "sword", "table", "throne", "toilet",
                                             "treasure chest", "treasure sack", "trophy", "ways of knighthood book", "window" };
 
@@ -186,7 +187,11 @@ std::vector<std::string> textParse(std::string astring)
     long nPlaceMatches = placeMatches.size();
 
     // Find out if it's {verb, item}, {verb, place}, {verb}, {place} or no match (empty result vector)
-    if (nPlaceMatches > 1) {
+    if (nVerbMatches == 0) {
+        printf("At least one valid verb must be used.\n");
+        return result;
+    }
+    else if (nPlaceMatches > 1) {
         printf("Please use only one valid location.\n");
         printf("The following valid locations were found...\n");
         print_vector(placeMatches);
@@ -207,9 +212,75 @@ std::vector<std::string> textParse(std::string astring)
     // "use" special case
     else if (verbMatches[0].compare("use") == 0 && nItemMatches > 1 && nPlaceMatches == 0) {
         // pushback use then each item
-        result.push_back(verbMatches[0]);
-        for (i =0 ; i < itemMatches.size(); i++) {
-            result.push_back(itemMatches[i]);
+        if (nItemMatches > 2) {
+            printf("\"use\" cannot be associated with more than 2 valid items. The item used and what the item is being used on.");
+            printf("For example use sword on guard takes \"sword\" and \"guard\".\n");
+            printf("The following valid items were found...\n");
+            print_vector(itemMatches);
+        }
+        // ensure accurate matches by comparing the items being used
+        else {
+            std::string item1 = itemMatches[0];
+            std::string item2 = itemMatches[1];
+            result.push_back(verbMatches[0]);
+            if (item1.compare("bow") == 0 || item2.compare("bow") == 0) {
+                if (item1.compare("guard") != 0 && item2.compare("guard") != 0 && item1.compare("king") != 0 && item2.compare("king") != 0) {
+                    printf("\"bow\" must be used with a target such as \"king\" or \"guard\".\n");
+                    return result;
+                }
+                if (item1.compare("bow") == 0) {
+                    result.push_back(item1);
+                    result.push_back(item2);
+                }
+                else {
+                    result.push_back(item2);
+                    result.push_back(item1);
+                }
+            }
+            else if (item1.compare("bow and arrow") == 0 || item2.compare("bow and arrow") == 0) {
+                if (item1.compare("guard") != 0 && item2.compare("guard") != 0 && item1.compare("king") != 0 && item2.compare("king") != 0) {
+                    printf("\"bow and arrow\" must be used with a target such as \"king\" or \"guard\".\n");
+                    return result;
+                }
+                if (item1.compare("bow and arrow") == 0) {
+                    result.push_back(item1);
+                    result.push_back(item2);
+                }
+                else {
+                    result.push_back(item2);
+                    result.push_back(item1);
+                }
+            }
+            else if (item1.compare("sword") == 0 || item2.compare("sword") == 0) {
+                if (item1.compare("guard") != 0 && item2.compare("guard") != 0 && item1.compare("king") != 0 && item2.compare("king") != 0) {
+                    printf("\"sword\" must be used with a target such as \"king\" or \"guard\".\n");
+                    return result;
+                }
+                if (item1.compare("sword") == 0) {
+                    result.push_back(item1);
+                    result.push_back(item2);
+                }
+                else {
+                    result.push_back(item2);
+                    result.push_back(item1);
+                }
+            }
+            else if (item1.compare("dungeon key") == 0 || item2.compare("dungeon key") == 0) {
+                if (item1.compare("cell door") != 0 && item2.compare("cell door") != 0) {
+                    if (item1.compare("lock") != 0 && item2.compare("lock") != 0) {
+                        printf("\"dungeon key\" can only be used on a \"cell door\" or a \"lock\".\n");
+                        return result;
+                    }
+                    if (item1.compare("dungeon key") == 0) {
+                        result.push_back(item1);
+                        result.push_back(item2);
+                    }
+                    else {
+                        result.push_back(item2);
+                        result.push_back(item1);
+                    }
+                }
+            }
         }
         return result;
     }
@@ -277,7 +348,7 @@ std::vector<std::string> textParse(std::string astring)
 ////    }
 //
 //
-//    std::string text = "use the sword on the guard";
+//    std::string text = "use dungeon key on lock";
 //
 //    printf("\ntextParse results...\n");
 //
