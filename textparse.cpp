@@ -109,6 +109,7 @@ std::vector<std::string> getMatch(std::vector<std::string> words, std::string ar
     associated with locations and returns {verb, location}. Some verbs are not associated with items or
     locations and just returns {verb} such as "items", "help", and "hint". "look" can be used with a item, location, or stand-alone
     When only a location is selected {"go", location} is returned.
+    "use" can return {use, item, item...}.
  */
 std::vector<std::string> textParse(std::string astring)
 {
@@ -185,26 +186,35 @@ std::vector<std::string> textParse(std::string astring)
     long nPlaceMatches = placeMatches.size();
 
     // Find out if it's {verb, item}, {verb, place}, {verb}, {place} or no match (empty result vector)
-    if (nVerbMatches > 1) {
-        printf("Please use only one valid verb.\n");
-        printf("The following valid verbs were found...\n");
-        print_vector(verbMatches);
-        return result;
-    }
-    else if (nItemMatches > 1) {
-        printf("Please use only one valid item.\n");
-        printf("The following valid items were found...\n");
-        print_vector(itemMatches);
-        return result;
-    }
-    else if (nPlaceMatches > 1) {
+    if (nPlaceMatches > 1) {
         printf("Please use only one valid location.\n");
         printf("The following valid locations were found...\n");
         print_vector(placeMatches);
         return result;
     }
+    else if (nVerbMatches > 1) {
+        printf("Please use only one valid verb.\n");
+        printf("The following valid verbs were found...\n");
+        print_vector(verbMatches);
+        return result;
+    }
+    else if (nItemMatches > 1  && verbMatches[0].compare("use") != 0) {
+        printf("Only one valid item allowed unless \"use\" is used.\n");
+        printf("The following valid items were found...\n");
+        print_vector(itemMatches);
+        return result;
+    }
+    // "use" special case
+    else if (verbMatches[0].compare("use") == 0 && nItemMatches > 1 && nPlaceMatches == 0) {
+        // pushback use then each item
+        result.push_back(verbMatches[0]);
+        for (i =0 ; i < itemMatches.size(); i++) {
+            result.push_back(itemMatches[i]);
+        }
+        return result;
+    }
     // can't have item and a place
-    else if (nItemMatches == 1 && nPlaceMatches == 1) {
+    else if (nItemMatches >= 1 && nPlaceMatches == 1) {
         printf("A valid place, \"%s\", and a valid item, \"%s\", cannot be used together. Please use {verb, item} or {verb, place}.\n", placeMatches[0].c_str(), itemMatches[0].c_str());
         return result;
     }
@@ -267,7 +277,7 @@ std::vector<std::string> textParse(std::string astring)
 ////    }
 //
 //
-//    std::string text = "hint dungeon key";
+//    std::string text = "use the sword on the guard";
 //
 //    printf("\ntextParse results...\n");
 //
