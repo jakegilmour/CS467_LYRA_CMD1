@@ -6,13 +6,14 @@
 //  Copyright © 2018 Kevin Conner. All rights reserved.
 //
 
-#include "save_game.hpp"
 #include <iostream>
 #include <vector>
 #include <sys/stat.h>
 #include <dirent.h>
 #include <time.h>
 #include <fstream>
+#include <string>
+#include "save_game.hpp"
 
 /*
     Writes the date and time then each element in the data array all
@@ -46,6 +47,7 @@ void write_to_file(std::string fname, std::string dt, int currentRoomNum, struct
         afile << playerInventory.items[i].roomNum << '\n';
         afile << playerInventory.items[i].useText1 << '\n';
         afile << playerInventory.items[i].useText2 << '\n';
+        afile << playerInventory.items[i].roomdescription << '\n';
         afile << "end item" << '\n';
     }
     
@@ -72,6 +74,7 @@ void write_to_file(std::string fname, std::string dt, int currentRoomNum, struct
             afile << aroom.items[k].roomNum << '\n';
             afile << aroom.items[k].useText1 << '\n';
             afile << aroom.items[k].useText2 << '\n';
+            afile << aroom.items[k].roomdescription << '\n';
             afile << "end item" << '\n';
         }
         
@@ -104,6 +107,7 @@ void write_to_file(std::string fname, std::string dt, int currentRoomNum, struct
 bool file_present(std::string fname) {
     DIR *sgdir;
     struct dirent *sdirent;
+    std::string temp_fname;
     
     // open saved_games directory
     sgdir = opendir("./saved_games");
@@ -116,7 +120,8 @@ bool file_present(std::string fname) {
     while ((sdirent = readdir(sgdir)) != NULL) {
         
         // mark the file present if it's found
-        if (strcmp(sdirent->d_name, fname.c_str()) == 0) {
+        temp_fname = sdirent->d_name;
+        if (temp_fname.compare(fname) == 0) {
             closedir(sgdir);
             return true;
         }
@@ -324,6 +329,7 @@ void save_game(int currentRoomNum, struct inventory playerInventory, vector <str
     time_t rawtime;
     struct tm *timeinfo;
     std::string fname = "saved_game_" + std::to_string(filen) + ".txt";
+    int i;
     
     // build timestamp string
     time(&rawtime);
@@ -344,7 +350,10 @@ void save_game(int currentRoomNum, struct inventory playerInventory, vector <str
                 std::getline(std::cin, overwrite);
                 
                 // lower case each letter in user input
-                std::transform(overwrite.begin(), overwrite.end(), overwrite.begin(), ::tolower);
+                //transform(overwrite.begin(), overwrite.end(), overwrite.begin(), ::tolower);
+                for (i = 0; i < overwrite.size(); i++) {
+                    tolower(overwrite[i]);
+                }
                 
                 if (overwrite.compare("y") == 0 || overwrite.compare("yes") == 0) {
                     write_to_file(fname, dt, currentRoomNum, playerInventory, rooms);

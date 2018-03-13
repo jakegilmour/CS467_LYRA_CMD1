@@ -286,6 +286,12 @@ std::vector<std::string> textParse(std::string astring)
     }
     // can't have item and a place
     else if (nItemMatches >= 1 && nPlaceMatches == 1) {
+        // "window" case
+        if (itemMatches[0].compare("window") == 0 && placeMatches[0].compare("window") == 0) {
+            result.push_back(verbMatches[0]);
+            result.push_back(itemMatches[0]);
+            return result;
+        }
         printf("A valid place, \"%s\", and a valid item, \"%s\", cannot be used together. Please use {verb, item} or {verb, place}.\n", placeMatches[0].c_str(), itemMatches[0].c_str());
         return result;
     }
@@ -323,41 +329,41 @@ std::vector<std::string> textParse(std::string astring)
     return result;
 }
 
-//int main(int argc, const char * argv[]) {
-//    int i;
-//    std::vector<std::string> result;
+int main(int argc, const char * argv[]) {
+    int i;
+    std::vector<std::string> result;
+
+    std::string validVerbs[16] = {   "inspect", "open", "shoot", "jump",
+                                     "tie", "climb", "drink", "read", "items",
+                                     "move", "go", "move", "take", "help",
+                                     "look", "look at" };
+
+    std::vector<std::string> words;
+    words.push_back("look");
+    words.push_back("look");
+    words.push_back("at");
+    words.push_back("the");
+    words.push_back("lamp");
+
+//    printf("getMatch results...\n");
 //
-//    std::string validVerbs[16] = {   "inspect", "open", "shoot", "jump",
-//                                     "tie", "climb", "drink", "read", "items",
-//                                     "move", "go", "move", "take", "help",
-//                                     "look", "look at" };
-//
-//    std::vector<std::string> words;
-//    words.push_back("look");
-//    words.push_back("look");
-//    words.push_back("at");
-//    words.push_back("the");
-//    words.push_back("lamp");
-//
-////    printf("getMatch results...\n");
-////
-////    result = getMatch(words, validVerbs, 16);
-////
-////    for (i = 0; i < result.size(); i++) {
-////        printf("%s\n", result[i].c_str());
-////    }
-//
-//
-//    std::string text = "use dungeon key on lock";
-//
-//    printf("\ntextParse results...\n");
-//
-//    result = textParse(text);
+//    result = getMatch(words, validVerbs, 16);
 //
 //    for (i = 0; i < result.size(); i++) {
 //        printf("%s\n", result[i].c_str());
 //    }
-//
-//    return 0;
-//}
+
+
+    std::string text = "go to the dungeon window";
+
+    printf("\ntextParse results...\n");
+
+    result = textParse(text);
+
+    for (i = 0; i < result.size(); i++) {
+        printf("%s\n", result[i].c_str());
+    }
+
+    return 0;
+}
 
