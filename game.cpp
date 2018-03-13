@@ -5,6 +5,16 @@
 #include <fstream>
 #include "textparse.hpp"
 
+#include "load_game.hpp"
+#include <dirent.h>
+#include <fstream>
+#include <sys/stat.h>
+#include "save_game.hpp"
+
+
+#include <time.h>
+
+
 #define NUMROOMS 15
 #define NUMITEMS 48
 
@@ -19,8 +29,46 @@ int main()
 	vector <struct room> rooms(NUMROOMS);
 	initializeRooms(rooms);
 	importItemData(rooms);
+	int currentRoomNum = 0;
+	string userInput;
 	
-	playGame(rooms, playerInventory);
+	do{
+		cout << "Welcome to the Castle!" << endl;
+		cout << "Enter 1 to start a new game" << endl;
+		cout << "Enter 2 to load a saved game" << endl;
+		
+		
+		
+		getline(cin, userInput);
+		
+		if (userInput == "1")
+		{
+			cout << "Welcome to the dungeon.  Press help if you need some assistance.  Other than that, you are on your own..." << endl;
+			printRoomDescription(rooms, currentRoomNum);
+			rooms[0].roomState = 1;
+			playGame(rooms, playerInventory, currentRoomNum);
+			
+		}
+		else if (userInput == "2")
+		{
+			
+			//load_game(currentRoomNum, playerInventory, rooms);
+			printRoomDescription(rooms, currentRoomNum);
+			playGame(rooms, playerInventory, currentRoomNum);
+			
+		}
+		else
+		{
+			cout << "You did not enter a valid command." << endl;
+			
+		}
+	
+	}while (userInput != "1" || userInput != "2");
+	
+	
+	
+	
+	
 	
 	return 0;
 }
@@ -574,17 +622,15 @@ Returns: -1 if the item is not in the room.  Otherwise returns index of where th
 
 */
 
-void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
+void playGame(vector <struct room> &rooms, struct inventory &playerInventory, int &currentRoomNum)
 {
 	
-	int currentRoomNum = 0;
+	
 	
 	string userInput;
 	vector <string> commands;
 	
-	printRoomDescription(rooms, currentRoomNum);
 	
-	rooms[0].roomState = 1;
 	
 	while(1){
 		getline(cin, userInput);
@@ -831,7 +877,7 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory)
 		}
 		else if (commands[0] == "loadgame")
 		{
-			cout << "help commands" << endl;
+			//load_game(currentRoomNum, playerInventory, rooms);
 
 		}
 		else if (commands[0] == "inventory")

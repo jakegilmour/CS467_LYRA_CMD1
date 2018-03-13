@@ -1,11 +1,11 @@
 Treasure Room
-You are in the Treasure Room.  There is treasure everywhere.  To the South is the small door leading back to the Pantry.  To the West is a vaulted door.  There are diamonds and rubies all over the floor.  There are gold amulets hanging on the walls.  You get the feeling that not a lot of people come into this room.
-You are in the Treasure Room.  There is treasure everywhere.  To the South is the small door leading back to the Pantry.  To the West is a vaulted door.
-You are in the Treasure Room. You have been here before.  To the south is the small door leading back to the Pantry.  To the West is the vaulted door leading back to the Chapel Room.
+You are in the Treasure Room.  There is treasure everywhere.  To the South is the tunnel leading back to the Pantry.  To the West is a vaulted door.  There are diamonds and rubies all over the floor.  There are gold amulets hanging on the walls.  You get the feeling that not a lot of people come into this room.
+You are in the Treasure Room.  There is treasure everywhere.  To the South is the tunnel leading back to the Pantry.  To the West is a vaulted door.
+You are in the Treasure Room. You have been here before.  To the south is the tunnel leading back to the Pantry.  To the West is the vaulted door leading back to the Chapel Room.
 3
 2
 1
 vaulted door
-small door
+tunnel
 If there is a guard in your way maybe there is something you can do to get by him.
 

@@ -16,7 +16,7 @@ struct item
 	int roomNum;
 	string useText1;
 	string useText2;
-	
+	string roomDescription;
 
 };
 
@@ -75,5 +75,5 @@ int itemIsInRoom(string itemName, vector <struct room> &rooms, int currentRoomNu
 void importItemData(vector <struct room> &rooms);
 void printRoomDescription(vector <struct room> &rooms, int currentRoomNum);
 int dropItem(string itemName, struct inventory &playerInventory, vector <struct room> &rooms, int currentRoomNum);
-void playGame(vector <struct room> &rooms, struct inventory &playerInventory);
+void playGame(vector <struct room> &rooms, struct inventory &playerInventory, int &currentRoomNum);
 #endif
