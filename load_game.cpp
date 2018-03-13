@@ -334,6 +334,11 @@ void load_game(int &currentRoomNum, struct inventory &playerInventory, vector <s
             data_index++;
             struct_item_counter++;
         }
+        else if (struct_item_counter == 8) {
+            temp_item.roomdescription = mydata[data_index];
+            data_index++;
+            struct_item_counter++;
+        }
     }
     
     // start room data section
@@ -424,6 +429,11 @@ void load_game(int &currentRoomNum, struct inventory &playerInventory, vector <s
                 }
                 else if (struct_item_counter == 7) {
                     temp_item.useText2 = mydata[data_index];
+                    data_index++;
+                    struct_item_counter++;
+                }
+                else if (struct_item_counter == 8) {
+                    temp_item.roomdescription = mydata[data_index];
                     data_index++;
                     struct_item_counter++;
                 }
