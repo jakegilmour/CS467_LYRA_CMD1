@@ -44,6 +44,10 @@ int main()
 		if (userInput == "1")
 		{
 			cout << "Welcome to the dungeon.  Press help if you need some assistance.  Other than that, you are on your own..." << endl;
+			cout << endl;
+			cout << endl;
+
+			
 			printRoomDescription(rooms, currentRoomNum);
 			rooms[0].roomState = 1;
 			playGame(rooms, playerInventory, currentRoomNum);
@@ -261,7 +265,7 @@ int useItem(string itemName, struct inventory &playerInventory, vector <struct r
 			//Castle Map
 			if (currentRoomNum < 14)
 			{
-				cout << playerInventory.items[itemInInv].useText1 << rooms[currentRoomNum + 1].name << endl;
+				cout << playerInventory.items[itemInInv].useText1 << " " << rooms[currentRoomNum + 1].name << endl;
 				rooms[currentRoomNum].roomState = 2;
 				return 1;
 			}
@@ -294,6 +298,20 @@ int useItem(string itemName, struct inventory &playerInventory, vector <struct r
 			if (currentRoomNum == 1 || currentRoomNum == 4 || currentRoomNum == 12)
 			{
 				cout << playerInventory.items[itemInInv].useText1 << endl;
+				
+				for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
+				{
+					
+					if (rooms[currentRoomNum].items[i].name == "guard")
+					{
+						
+						rooms[currentRoomNum].items.erase(rooms[currentRoomNum].items.begin() + i);
+						rooms[currentRoomNum].numItems--;
+					}
+					
+					
+				}
+				
 				rooms[currentRoomNum].roomState = 2;
 				return 1;
 			}
@@ -311,6 +329,21 @@ int useItem(string itemName, struct inventory &playerInventory, vector <struct r
 			{
 				cout << playerInventory.items[itemInInv].useText1 << endl;
 				rooms[currentRoomNum].roomState = 2;
+				
+				for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
+				{
+					
+					if (rooms[currentRoomNum].items[i].name == "guard")
+					{
+						
+						rooms[currentRoomNum].items.erase(rooms[currentRoomNum].items.begin() + i);
+						rooms[currentRoomNum].numItems--;
+					}
+					
+					
+				}
+					
+					
 				return 1;
 			}
 			else if (currentRoomNum == 14)
@@ -531,24 +564,15 @@ void printLongRoomDescription(vector <struct room> &rooms, int currentRoomNum)
 {
 	
 
-	cout << rooms[currentRoomNum].description1 << endl;
+	cout << rooms[currentRoomNum].description1;
 
-	cout << "In this room you notice a ";
+	
 	
 	for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
 	{
-		if (i == 0)
-		{
-			
-			cout << rooms[currentRoomNum].items[i].name;
-			
-		}
-		else
-		{
-			cout << ", a " << rooms[currentRoomNum].items[i].name;
-		}
 		
-		
+		cout << "  " << rooms[currentRoomNum].items[i].roomdescription;
+
 	}
 	
 	cout << endl;
@@ -574,43 +598,37 @@ void printRoomDescription(vector <struct room> &rooms, int currentRoomNum)
 	switch (rooms[currentRoomNum].roomState)
 	{
 		case 0: 
-			cout << rooms[currentRoomNum].description1 << endl;
+			cout << rooms[currentRoomNum].description1;
 			break;
 		case 1: 
-			cout << rooms[currentRoomNum].description2 << endl;
+			cout << rooms[currentRoomNum].description2;
 			break;
 		case 2: 
-			cout << rooms[currentRoomNum].description3 << endl;
+			cout << rooms[currentRoomNum].description3;
 			break;
 
 	}
 	
-	
-		cout << "A few items in particular catch your interest:" << endl;
+
 		
 		for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
 		{
-			if (i == 0)
-			{
 				
 				if (currentRoomNum == 0 && rooms[currentRoomNum].items[i].name == "dungeon key")
 				{
+					
 				}
 				else
 				{
-					cout << rooms[currentRoomNum].items[i].name << endl;
+					cout << "  " << rooms[currentRoomNum].items[i].roomdescription;
 				}
+					
+					
 
-			}
-			else
-			{
-				cout << rooms[currentRoomNum].items[i].name << endl;
-			}
-			
 			
 		}
 
-	
+	cout << endl;
 	
 }
 
@@ -624,12 +642,10 @@ Returns: -1 if the item is not in the room.  Otherwise returns index of where th
 
 void playGame(vector <struct room> &rooms, struct inventory &playerInventory, int &currentRoomNum)
 {
-	
-	
+
 	
 	string userInput;
 	vector <string> commands;
-	
 	
 	
 	while(1){
@@ -657,7 +673,7 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 			printLongRoomDescription(rooms, currentRoomNum);
 			
 		}
-		else if (commands[0] == "inspect")
+		else if (commands[0] == "inspect" || commands[0] == "look at")
 		{
 			inspectItem(commands[1], rooms, playerInventory, currentRoomNum);
 
@@ -872,7 +888,7 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 		}
 		else if (commands[0] == "savegame")
 		{
-			// gamestate {currentRoomNum, currentRoomState, 
+			save_game(currentRoomNum, playerInventory, rooms);
 
 		}
 		else if (commands[0] == "loadgame")
@@ -899,15 +915,15 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 			}
 
 		}
-		else if (commands[0] == "shoot king" && commands[1] == "bow")
+		else if (commands[0] == "shoot king" && commands[1] == "bow" && currentRoomNum == 14)
 		{
-			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+			useItem("bow and arrow", playerInventory, rooms, currentRoomNum);
 		}
-		else if (commands[0] == "shoot guard" && commands[1] == "bow")
+		else if (commands[0] == "shoot guard" && commands[1] == "bow" || commands[1] == "bow and arrow" && currentRoomNum != 14)
 		{
-			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+			useItem("bow and arrow", playerInventory, rooms, currentRoomNum);
 		}
-		else if (commands[0] == "read" && commands[1] == "castle map")
+		else if (commands[0] == "read" && commands[1] == "castle map" || commands[1] == "guard duty roster")
 		{
 			useItem(commands[1], playerInventory, rooms, currentRoomNum);
 		}
@@ -934,6 +950,10 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 		else if (commands[0] == "stab guard" && commands[1] == "sword")
 		{
 			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+		}
+		else if (commands[0] == "swing sword" && commands[1] == "guard")
+		{
+			useItem("sword", playerInventory, rooms, currentRoomNum);
 		}
 		else if (commands[0] == "shine" && commands[1] == "lamp")
 		{
@@ -1031,6 +1051,11 @@ void importItemData(vector <struct room> &rooms)
 				{
 					fileLine.erase(fileLine.length() - 1);
 					newItem.useText2 = fileLine;
+				}
+				else if (lineCounter == 9)
+				{
+					fileLine.erase(fileLine.length() - 1);
+					newItem.roomdescription = fileLine;
 				}
 				
 				lineCounter++;

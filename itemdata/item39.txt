@@ -1,8 +1,12 @@
 39
 window
-This window is pretty tall.  You could jump but it might hurt.  It also appears that a rope could  be tied to the hook next to the window.
+This window is pretty tall.  You could jump but it might hurt.
 7
 0
 7
+
+
+There is a window carved into the wall.
+
 
 

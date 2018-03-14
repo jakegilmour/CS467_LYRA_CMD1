@@ -6,4 +6,5 @@ The lamp helps you see in the dark.
 0
 That worked.  Now you can see.  
 
+A lamp is in the corner of the room.
 

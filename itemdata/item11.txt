@@ -6,4 +6,6 @@ There are bars covering the dungeon window.  You can't see much beyond the castl
 0
 
 
+There is a dungeon window.
+
 

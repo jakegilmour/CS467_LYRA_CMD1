@@ -1,9 +1,11 @@
 30
 flour
-You notice a pile consisting of several sacks of flour.  You look a little closer and notice a loose floorboard under the bags of flour.  Beneath the floorboard there is a tunnel.
+You look a little closer and notice a loose floorboard under the bags of flour.  Beneath the floorboard there is a tunnel.
 9
 0
 9
 
+
+You notice a pile of large bags.  These bags appear to contain flour.
 
 

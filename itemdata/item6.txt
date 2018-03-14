@@ -4,6 +4,9 @@ Inside the treasure sack there are diamonds and rubies.  There is one gold coin.
 11
 1
 5
-Luckily this guard was open to bribes.  You can now pass freely.
+Luckily this guard was open to bribes.  You can now pass freely.  
+
+There is a treasure sack on the ground and it appears to be full.
+
 
 

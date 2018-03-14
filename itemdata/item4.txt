@@ -6,3 +6,6 @@ This sword could be used to defeat a guard
 4
 You took out the guard!!  Your adrenaline is pumping.  Your swordsmanship is top notch.
 
+There is a sword lieing against the wall.
+
+

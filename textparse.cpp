@@ -328,7 +328,7 @@ std::vector<std::string> textParse(std::string astring)
     printf("No valid matches found.\n");
     return result;
 }
-
+/*
 int main(int argc, const char * argv[]) {
     int i;
     std::vector<std::string> result;
@@ -367,3 +367,4 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
+*/

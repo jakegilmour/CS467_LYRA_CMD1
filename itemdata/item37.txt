@@ -1,8 +1,10 @@
 37
 table
-You notice a table facing the opposite direction as the other table.  This must be where the king sits and eats.
+This table is large and has royal tones.  This must be where the king sits and eats.
 13
 0
 13
 
+
+You notice a table facing the opposite direction as the other table.
 

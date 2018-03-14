@@ -16,7 +16,7 @@ struct item
 	int roomNum;
 	string useText1;
 	string useText2;
-	string roomDescription;
+	string roomdescription;
 
 };
 

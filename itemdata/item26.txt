@@ -6,4 +6,8 @@ This book describes the code that knights must abide by.  The way of the knight 
 7
 
 
+The ways of knighthood book is open and lying on the floor.
+
+
+
 

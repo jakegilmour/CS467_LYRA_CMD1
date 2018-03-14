@@ -6,3 +6,6 @@ The chest is locked.  You try to pick it up but it is way too heavy to lift.  If
 10
 
 
+There is a treasure chest in the middle of the room.
+
+

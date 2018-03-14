@@ -6,3 +6,6 @@ The door is locked and there are no keys in sight.  You start to get a little ne
 9
 
 
+The main door has a large lock on it.
+
+

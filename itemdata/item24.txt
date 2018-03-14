@@ -1,8 +1,12 @@
 24
 toilet
-You notice a toilet.  There is no running water, and it smells rather awful.  If you don't have to go to the bathroom, you woulnd't want to be near the toilet.
+In the toilet there is no running water and it smells rather awful.  If you don't have to go to the bathroom, you woulnd't want to be near the toilet.
 7
 0
 7
+
+
+There is a toilet against the wall.
+
 
 

@@ -6,4 +6,5 @@ It appears this rope could help you climb out of a window.
 1
 That was smart.  Now you can climb out of the window. 
 
+A rope is coiled next to the wall.
 

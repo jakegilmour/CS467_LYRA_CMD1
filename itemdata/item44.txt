@@ -1,8 +1,10 @@
 44
 guard
-A guard is on duty.  They take turns patrolling the castle.  You won't be able to sneak past him.  You can't get a good vantage point, but he appears to be small.  You may be able to overpower him in close combat.
+The guards take turns patrolling the castle.  You won't be able to sneak past him.  You can't get a good vantage point, but he appears to be small.  You may be able to overpower him in close combat.
 9
 0
 9
 
+
+A guard is on duty.
 

@@ -1,9 +1,12 @@
 21
 spider
-You notice a spider in the corner of the cellar.  It's web has gotten very large, and you notice several insects trapped in it.  You also notice a red spot on the spiders belly.  Better to stay away from it.
+The spider's web has gotten very large, and you notice several insects trapped in it.  You also notice a red spot on the spiders belly.  Better to stay away from it.
 5
 0
 5
+
+
+You notice a spider in the corner of the cellar.
 
 
 

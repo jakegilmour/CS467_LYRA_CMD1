@@ -6,4 +6,6 @@ You peer through the crack in the wall.  On the otherside of the wall you can se
 7
 
 
+There is a crack in the wall.
+
 
