@@ -1,6 +1,6 @@
 18
 shield
-You notice a shield on the ground.  It has a coat of arms on it, but you can't make out what family it comes from.  You have always been a great swordsmen, but shields usually slow you down in combat.
+The shield is leaning up against the wall.  It has a coat of arms on it, but you can't make out what family it comes from.  You have always been a great swordsmen, but shields usually slow you down in combat.
 4
 0
 4

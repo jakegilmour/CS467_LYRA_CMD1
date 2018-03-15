@@ -1,7 +1,7 @@
-Master Bed Chamber
-You are in the Master Bed Chamber.  This is where the king sleeps.It's dark in here.  You can somewhat make out what is in the room, but without light you may be missing some stuff.  The bed is huge.  Now you understand why they call large beds "King Size".  There are curtains all around the bed.  There are some windows and the sun is peering in.  There is a table in the corner.  There is a fireplace, but no fire going right now.  To the South is the gilded door leading back to the Chapel Room.  You notice a double door to the West.
-You are in the Master Bed Chamber.  This is where the king sleeps.  It's dark in here.  You can somewhat make out what is in the room, but without light you may be missing some stuff.  To the South is the gilded door leading back to the Chapel Room.  You notice a double door to the West.
-You are in the Master Bed Chamber.  You have been here before.  To the South is the gilded door leading back to the Chapel Room.  To the West is a double door leading to the Great Hall.
+master bed chamber
+You are in the master bed chamber.  This is where the king sleeps.It's dark in here.  You can somewhat make out what is in the room, but without light you may be missing some stuff.  The bed is huge.  Now you understand why they call large beds "King Size".  There are curtains all around the bed.  There are some windows and the sun is peering in.  There is a table in the corner.  There is a fireplace, but no fire going right now.  To the South is the gilded door leading back to the chapel room.  You notice a double door to the West.
+You are in the master bed chamber.  This is where the king sleeps.  It's dark in here.  You can somewhat make out what is in the room, but without light you may be missing some stuff.  To the South is the gilded door leading back to the chapel room.  You notice a double door to the West.
+You are in the master bed chamber.  You have been here before.  To the South is the gilded door leading back to the chapel room.  To the West is a double door leading to the great hall.
 3
 2
 1

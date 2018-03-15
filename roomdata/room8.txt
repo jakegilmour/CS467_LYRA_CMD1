@@ -1,11 +1,11 @@
-Kitchen
-You are in the Kitchen.  To the South you notice the small door to the Lavaratory that you just came through.  There is another old door to the West.  You notice a guard across the kitchen.  You might not want to get too close to him, but it is going to be hard to get around him.  Maybe there is something else that you can do.  There are pots and pans everywhere, and getting into a skirmish with the guard may cause a ruckus, which could draw unneeded attention.  The food in here smells good, but now is not the time to eat.  
-You are in the Kitchen.  To the South you notice the small door to the Lavaratory that you just came through.  There is another old door to the West.  You notice a guard across the kitchen.  You might not want to get too close to him, but it is going to be hard to get around him.  Maybe there is something else that you can do.
-You are in the Kitchen.  You have been here before.  To the South you see the small door to the Lavoratory.  To the West you notice the old door to the Pantry.
+kitchen
+You are in the kitchen.  To the South you notice the window door to the lavaratory that you just came through.  There is another old door to the West.  There are pots and pans everywhere, and getting into a skirmish with the guard may cause a ruckus, which could draw unneeded attention.  The food in here smells good, but now is not the time to eat.  
+You are in the kitchen.  To the South you notice the window to the lavaratory that you just came through.  There is another old door to the West.  
+You are in the kitchen.  You have been here before.  To the South you see the window to the lavoratory.  To the West you notice the old door to the pantry.
 3
 2
 1
 old door
-small door
+window
 Maybe there is a way you can defeat the guard without getting too close...
 

@@ -1,7 +1,7 @@
-Basement
+basement
 There is a stale smell in the basement.  To the west is the cell door to the dungeon that you just came from.  It looks like there is a wooden door to the South but it is hard to see because it is so dark.  It would be much easier to get through this room with light. 
 It's too dark to do anything in here.  Maybe if you could see you could get to the wooden door to the South.  The cell door to the dungeon is to the West.
-The basement is cold and muggy but you know your way through because you've been through here before.  Did you miss something?   To the south there is the cell door that leads to the dungeon and to the West there is the wooden door that leads to the Guard Room.
+The basement is cold and muggy but you know your way through because you've been through here before.  Did you miss something?   To the West there is the cell door that leads to the dungeon and to the South there is the wooden door that leads to the Guard Room.
 2
 3
 1

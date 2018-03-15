@@ -1,6 +1,6 @@
 10
 food
-The food is slightly moldy.  It smells awful.  You would not normall want to eat this food, but if you were desperately hungry you might make an exception.
+The food is slightly moldy.  It smells awful.  You would not normally want to eat this food, but if you were desperately hungry you might make an exception.
 0
 0
 0

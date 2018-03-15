@@ -1,7 +1,7 @@
-Chapel Room
-You have entered the Chapel.  There are paintings covering the walls.  You see books laid throughout the chapel.  There is a fountain that contains holy water.  To the east is the vaulted door back to the treasure room.  To the North you notice a gilded door.  It has been many years since you have visited a chapel.  You used to be a religious man, but prisoners are prevented from attending religious services.
-You have entered the Chapel.  There are paintings covering the walls.  You see books laid throughout the chapel.  There is a fountain that contains holy water.  To the east is the vaulted door back to the treasure room.  To the North you notice a gilded door.
-You are in the chapel. You have been here before.  Thereis a vaulted door to the East leading to the treasure room.  There is a gilded door to the North leading to the Master Bed Chamber.
+chapel room
+You have entered the chapel.  There are paintings covering the walls.  You see books laid throughout the chapel.  There is a fountain that contains holy water.  To the east is the vaulted door back to the treasure room.  To the North you notice a gilded door.  It has been many years since you have visited a chapel.  You used to be a religious man, but prisoners are prevented from attending religious services.
+You have entered the chapel.  There are paintings covering the walls.  You see books laid throughout the chapel.  There is a fountain that contains holy water.  To the east is the vaulted door back to the treasure room.  To the North you notice a gilded door.
+You are in the chapel. You have been here before.  There is a vaulted door to the East leading to the treasure room.  There is a gilded door to the North leading to the master bed chamber.
 1
 0
 1

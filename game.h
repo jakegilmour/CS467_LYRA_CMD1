@@ -76,4 +76,6 @@ void importItemData(vector <struct room> &rooms);
 void printRoomDescription(vector <struct room> &rooms, int currentRoomNum);
 int dropItem(string itemName, struct inventory &playerInventory, vector <struct room> &rooms, int currentRoomNum);
 void playGame(vector <struct room> &rooms, struct inventory &playerInventory, int &currentRoomNum);
+string formatText(string source, size_t width);
+
 #endif
