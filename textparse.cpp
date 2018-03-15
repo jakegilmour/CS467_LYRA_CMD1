@@ -117,15 +117,15 @@ std::vector<std::string> textParse(std::string astring)
     std::vector<std::string> result;
     std::vector<std::string> words;
     std::string temp;
-    const int verbsSize = 25;
+    const int verbsSize = 28;
     const int itemsSize = 45;
     const int placesSize = 30;
 
     std::string validVerbs[verbsSize] = {   "climb", "drink", "go", "help", "hint",
-                                            "inspect", "items", "jump", "look", "look at",
-                                            "move", "open", "read", "shine", "shoot guard",
-                                            "shoot king", "slay guard", "slay king",
-                                            "stab guard", "stab king", "swing sword", "take",
+                                            "inspect", "inventory", "items", "jump", "loadgame",
+                                            "look", "look at", "move", "open", "read",
+                                            "savegame", "shine", "shoot guard", "shoot king", "slay guard",
+                                            "slay king", "stab guard", "stab king", "swing sword", "take",
                                             "tie", "unlock", "use" };
 
     std::string validItems[itemsSize] = {   "barrel", "bed", "bow", "bow and arrow", "castle map",
@@ -187,7 +187,7 @@ std::vector<std::string> textParse(std::string astring)
     long nPlaceMatches = placeMatches.size();
 
     // Find out if it's {verb, item}, {verb, place}, {verb}, {place} or no match (empty result vector)
-    if (nVerbMatches == 0) {
+    if (nVerbMatches == 0 && nPlaceMatches == 0) {
         printf("At least one valid verb must be used.\n");
         return result;
     }
@@ -207,6 +207,12 @@ std::vector<std::string> textParse(std::string astring)
         printf("Only one valid item allowed unless \"use\" is used.\n");
         printf("The following valid items were found...\n");
         print_vector(itemMatches);
+        return result;
+    }
+    // {place} pushback go before place
+    else if (nPlaceMatches == 1 && nItemMatches == 0 && nVerbMatches == 0) {
+        result.push_back("go");
+        result.push_back(placeMatches[0]);
         return result;
     }
     // "use" special case
@@ -295,20 +301,14 @@ std::vector<std::string> textParse(std::string astring)
         printf("A valid place, \"%s\", and a valid item, \"%s\", cannot be used together. Please use {verb, item} or {verb, place}.\n", placeMatches[0].c_str(), itemMatches[0].c_str());
         return result;
     }
-    // {place}
-    else if (nPlaceMatches == 1 && nItemMatches == 0 && nVerbMatches == 0) {
-        result.push_back("go");
-        result.push_back(placeMatches[0]);
-        return result;
-    }
     // {verb}
     else if (nPlaceMatches == 0 && nItemMatches == 0 && nVerbMatches == 1) {
-        if (verbMatches[0].compare("items") == 0 || verbMatches[0].compare("help") == 0 || verbMatches[0].compare("hint") == 0 || verbMatches[0].compare("look") == 0) {
+        if (verbMatches[0].compare("items") == 0 || verbMatches[0].compare("help") == 0 || verbMatches[0].compare("hint") == 0 || verbMatches[0].compare("look") == 0 || verbMatches[0].compare("inventory") == 0 || verbMatches[0].compare("savegame") == 0 || verbMatches[0].compare("loadgame") == 0) {
             result.push_back(verbMatches[0]);
         }
         else {
-            printf("No valid items or verbs found. \nA verb must be used with a place or a item except for \"help\" and \"items\".\n");
-            printf("\"%s\" was used as a stand-alone verb instead.\n", verbMatches[0].c_str());
+            printf("No valid items or locations were found.\n");
+            printf("\"%s\" cannot be used as a stand-alone verb.\n", verbMatches[0].c_str());
         }
         return result;
     }
@@ -328,43 +328,42 @@ std::vector<std::string> textParse(std::string astring)
     printf("No valid matches found.\n");
     return result;
 }
-/*
-int main(int argc, const char * argv[]) {
-    int i;
-    std::vector<std::string> result;
 
-    std::string validVerbs[16] = {   "inspect", "open", "shoot", "jump",
-                                     "tie", "climb", "drink", "read", "items",
-                                     "move", "go", "move", "take", "help",
-                                     "look", "look at" };
-
-    std::vector<std::string> words;
-    words.push_back("look");
-    words.push_back("look");
-    words.push_back("at");
-    words.push_back("the");
-    words.push_back("lamp");
-
-//    printf("getMatch results...\n");
+//int main(int argc, const char * argv[]) {
+//    int i;
+//    std::vector<std::string> result;
 //
-//    result = getMatch(words, validVerbs, 16);
+//    std::string validVerbs[16] = {   "inspect", "open", "shoot", "jump",
+//                                     "tie", "climb", "drink", "read", "items",
+//                                     "move", "go", "move", "take", "help",
+//                                     "look", "look at" };
+//
+//    std::vector<std::string> words;
+//    words.push_back("look");
+//    words.push_back("look");
+//    words.push_back("at");
+//    words.push_back("the");
+//    words.push_back("lamp");
+//
+////    printf("getMatch results...\n");
+////
+////    result = getMatch(words, validVerbs, 16);
+////
+////    for (i = 0; i < result.size(); i++) {
+////        printf("%s\n", result[i].c_str());
+////    }
+//
+//
+//    std::string text = "savegame";
+//
+//    printf("\ntextParse results...\n");
+//
+//    result = textParse(text);
 //
 //    for (i = 0; i < result.size(); i++) {
 //        printf("%s\n", result[i].c_str());
 //    }
+//
+//    return 0;
+//}
 
-
-    std::string text = "go to the dungeon window";
-
-    printf("\ntextParse results...\n");
-
-    result = textParse(text);
-
-    for (i = 0; i < result.size(); i++) {
-        printf("%s\n", result[i].c_str());
-    }
-
-    return 0;
-}
-
-*/
