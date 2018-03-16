@@ -399,41 +399,41 @@ std::vector<std::string> textParse(std::string astring)
     return result;
 }
 
-int main(int argc, const char * argv[]) {
-    int i;
-    std::vector<std::string> result;
-
-    std::string validVerbs[16] = {   "inspect", "open", "shoot", "jump",
-                                     "tie", "climb", "drink", "read", "items",
-                                     "move", "go", "move", "take", "help",
-                                     "look", "look at" };
-
-    std::vector<std::string> words;
-    words.push_back("look");
-    words.push_back("look");
-    words.push_back("at");
-    words.push_back("the");
-    words.push_back("lamp");
-
-//    printf("getMatch results...\n");
+//int main(int argc, const char * argv[]) {
+//    int i;
+//    std::vector<std::string> result;
 //
-//    result = getMatch(words, validVerbs, 16);
+//    std::string validVerbs[16] = {   "inspect", "open", "shoot", "jump",
+//                                     "tie", "climb", "drink", "read", "items",
+//                                     "move", "go", "move", "take", "help",
+//                                     "look", "look at" };
+//
+//    std::vector<std::string> words;
+//    words.push_back("look");
+//    words.push_back("look");
+//    words.push_back("at");
+//    words.push_back("the");
+//    words.push_back("lamp");
+//
+////    printf("getMatch results...\n");
+////
+////    result = getMatch(words, validVerbs, 16);
+////
+////    for (i = 0; i < result.size(); i++) {
+////        printf("%s\n", result[i].c_str());
+////    }
+//
+//
+//    std::string text = "bribe guard";
+//
+//    printf("\ntextParse results...\n");
+//
+//    result = textParse(text);
 //
 //    for (i = 0; i < result.size(); i++) {
 //        printf("%s\n", result[i].c_str());
 //    }
-
-
-    std::string text = "use treasure sack on guard";
-
-    printf("\ntextParse results...\n");
-
-    result = textParse(text);
-
-    for (i = 0; i < result.size(); i++) {
-        printf("%s\n", result[i].c_str());
-    }
-
-    return 0;
-}
+//
+//    return 0;
+//}
 
