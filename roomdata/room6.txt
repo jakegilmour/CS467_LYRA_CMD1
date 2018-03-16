@@ -1,7 +1,7 @@
 solar room
 You are now in the solar room.  You can tell this place is fancy, which means royalty must stay here. You notice beautiful arches on the ceiling and large windows all around.  There is a fireplace and a table with chairs. To the West is the large door leading to the cellar. You notice another small door to the North.
 You are in the solar room.  It is a fancy room, royalty spends a lot of time here.  You notice windows all around.  There is a large door to the West leading to the cellar, and a small door to the North that leads somewhere new.
-You are in the solar room.  You have been here before.  To the West is the large door to the cellar and to the North is the small door to the lavoratory.
+You are in the solar room.  You have been here before.  To the West is the large door to the cellar and to the North is the small door to the lavatory.
 2
 0
 1

@@ -4,7 +4,7 @@ The key appears to open the lock in the dungeon.
 0
 1
 0
-That worked.  The dungeon door is now unlocked
+That worked.  The cell door is now unlocked
 
 A dungeon key lies on the floor.
 

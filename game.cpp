@@ -17,7 +17,7 @@
 
 
 #define NUMROOMS 15
-#define NUMITEMS 48
+#define NUMITEMS 49
 
 
 
@@ -52,9 +52,8 @@ int main()
 	
 	
 	
-	
 	do{
-		cout << "Welcome to the Castle!" << endl;
+		cout << "Welcome to Castle Escape!" << endl;
 		cout << "Enter 1 to start a new game" << endl;
 		cout << "Enter 2 to load a saved game" << endl;
 		
@@ -65,7 +64,7 @@ int main()
 		if (userInput == "1")
 		{
 			cout << endl;
-			cout << "Welcome to the dungeon.  Press help if you need some assistance.  Other than that, you are on your own..." << endl;
+			cout << "Your escape from the castle starts now.  Press help if you need some assistance.  Other than that, you are on your own..." << endl;
 			cout << endl;
 			cout << endl;
 
@@ -342,6 +341,54 @@ int useItem(string itemName, struct inventory &playerInventory, vector <struct r
 			{
 				cout << playerInventory.items[itemInInv].useText1 << endl << endl;
 				rooms[currentRoomNum].roomState = 2;
+				
+				
+				for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
+				{
+					
+					if (rooms[currentRoomNum].items[i].name == "guard")
+					{
+						
+						rooms[currentRoomNum].items.erase(rooms[currentRoomNum].items.begin() + i);
+						rooms[currentRoomNum].numItems--;
+					}
+					
+					
+				}
+				
+				
+				return 1;
+			}
+			else
+			{
+				cout << "Using that here doesn't seem wise" << endl << endl;
+				return 0;
+			}
+			
+		}
+		else if (playerInventory.items[itemInInv].usedInRoom == 11)
+		{
+			//treasure sack
+			if (currentRoomNum == 11)
+			{
+				cout << playerInventory.items[itemInInv].useText1 << endl << endl;
+				rooms[currentRoomNum].roomState = 2;
+				
+				
+				for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
+				{
+					
+					if (rooms[currentRoomNum].items[i].name == "guard")
+					{
+						
+						rooms[currentRoomNum].items.erase(rooms[currentRoomNum].items.begin() + i);
+						rooms[currentRoomNum].numItems--;
+					}
+					
+					
+				}
+				
+				
 				return 1;
 			}
 			else
@@ -353,23 +400,12 @@ int useItem(string itemName, struct inventory &playerInventory, vector <struct r
 		}
 		else if (playerInventory.items[itemInInv].usedInRoom == 100)
 		{
-			//sword
+			//lamp
 			if (currentRoomNum == 1 || currentRoomNum == 4 || currentRoomNum == 12)
 			{
 				cout << playerInventory.items[itemInInv].useText1 << endl << endl;
 				
-				/*for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
-				{
-					
-					if (rooms[currentRoomNum].items[i].name == "guard")
-					{
-						
-						rooms[currentRoomNum].items.erase(rooms[currentRoomNum].items.begin() + i);
-						rooms[currentRoomNum].numItems--;
-					}
-					
-					
-				}*/
+				
 				
 				rooms[currentRoomNum].roomState = 2;
 				return 1;
@@ -389,7 +425,7 @@ int useItem(string itemName, struct inventory &playerInventory, vector <struct r
 				cout << playerInventory.items[itemInInv].useText1 << endl << endl;
 				rooms[currentRoomNum].roomState = 2;
 				
-				/*for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
+				for (int i = 0; i < rooms[currentRoomNum].numItems; i++)
 				{
 					
 					if (rooms[currentRoomNum].items[i].name == "guard")
@@ -400,7 +436,7 @@ int useItem(string itemName, struct inventory &playerInventory, vector <struct r
 					}
 					
 					
-				}*/
+				}
 					
 					
 				return 1;
@@ -410,6 +446,7 @@ int useItem(string itemName, struct inventory &playerInventory, vector <struct r
 				
 				cout << playerInventory.items[itemInInv].useText2 << endl << endl;
 				rooms[currentRoomNum].roomState = 2;
+				exit(0);
 				return 1;
 				
 			}
@@ -859,7 +896,23 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 				}
 				else
 				{
-					if (commands[1] == "door")
+					if (commands[1] == rooms[currentRoomNum].prevDoor)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == "south" && rooms[currentRoomNum].prevRoom == 3)
+					{
+						goToPrevRoom(currentRoomNum);
+						printRoomDescription(rooms, currentRoomNum);
+					}
+					else if (commands[1] == rooms[currentRoomNum].nextDoor)
+					{
+						goToNextRoom(rooms, currentRoomNum);
+						
+					}
+					else if (commands[1] == "door")
 					{
 						goToPrevRoom(currentRoomNum);
 						printRoomDescription(rooms, currentRoomNum);
@@ -879,26 +932,15 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 						goToPrevRoom(currentRoomNum);
 						printRoomDescription(rooms, currentRoomNum);
 					}
-					else if (commands[1] == rooms[currentRoomNum + 1].name)
-					{
-						goToNextRoom(rooms, currentRoomNum);
-						
-					}
 					else if (commands[1] == rooms[currentRoomNum - 1].name)
 					{
 						goToPrevRoom(currentRoomNum);
 						printRoomDescription(rooms, currentRoomNum);
 						
 					}
-					else if (commands[1] == rooms[currentRoomNum].nextDoor)
+					else if (commands[1] == rooms[currentRoomNum + 1].name)
 					{
 						goToNextRoom(rooms, currentRoomNum);
-						
-					}
-					else if (commands[1] == rooms[currentRoomNum].prevDoor)
-					{
-						goToPrevRoom(currentRoomNum);
-						printRoomDescription(rooms, currentRoomNum);
 						
 					}
 					else if (commands[1] == "north" && rooms[currentRoomNum].prevRoom == 0)
@@ -907,11 +949,6 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 						printRoomDescription(rooms, currentRoomNum);
 					}
 					else if (commands[1] == "east" && rooms[currentRoomNum].prevRoom == 1)
-					{
-						goToPrevRoom(currentRoomNum);
-						printRoomDescription(rooms, currentRoomNum);
-					}
-					else if (commands[1] == "south" && rooms[currentRoomNum].prevRoom == 3)
 					{
 						goToPrevRoom(currentRoomNum);
 						printRoomDescription(rooms, currentRoomNum);
@@ -967,7 +1004,8 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 		}
 		else if (commands[0] == "loadgame")
 		{
-			//load_game(currentRoomNum, playerInventory, rooms);
+			load_game(currentRoomNum, playerInventory, rooms);
+			printRoomDescription(rooms, currentRoomNum);
 
 		}
 		else if (commands[0] == "inventory")
@@ -986,12 +1024,14 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 					inventoryContents += playerInventory.items[i].name;
 				}
 				
-				cout << inventoryContents << endl << endl;
+				
 				
 			}
+			
+			cout << inventoryContents << endl << endl;
 
 		}
-		else if (commands[0] == "shoot king" && commands[1] == "bow" && currentRoomNum == 14)
+		else if (commands[0] == "shoot king" && commands[1] == "bow" || commands[1] == "bow and arrow" && currentRoomNum == 14)
 		{
 			useItem("bow and arrow", playerInventory, rooms, currentRoomNum);
 		}
@@ -1045,19 +1085,20 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 		}
 		else if (commands[0] == "shine" && commands[1] == "lamp")
 		{
-			//useItem(commands[1], playerInventory, rooms, currentRoomNum);
-			
-			save_game(currentRoomNum, playerInventory, rooms);
-			
+			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+					
+		}
+		else if (commands[0] == "unlock" && commands[1] == "lock" || commands[1] == "door" || commands[1] == "cell door")
+		{
+			useItem("dungeon key", playerInventory, rooms, currentRoomNum);
+					
 		}
 		else
 		{
-			
-			
-			
-			
+			cout << "That didn't work.  You should try doing something else" << endl << endl;
 			
 		}
+
 
 			
 			
@@ -1080,7 +1121,7 @@ void importItemData(vector <struct room> &rooms)
 		string itemFileName = "./itemdata/item";
 		string fileLine;
 		
-		for (int k = 0; k < NUMITEMS; k++)
+		for (int k = 0; k <= NUMITEMS; k++)
 		{
 		
 			string itemFileName = "./itemdata/item";

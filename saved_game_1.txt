@@ -1,0 +1,2722 @@
+Thu Mar 15 19:19:37 2018
+1
+start player inventory
+2
+start item
+0
+dungeon key
+The key appears to open the lock in the dungeon.
+0
+1
+0
+That worked.  The cell door is now unlocked
+
+A dungeon key lies on the floor.
+end item
+start item
+2
+lamp
+The lamp helps you see in the dark.
+100
+1
+0
+That worked.  Now you can see.  
+
+A lamp is in the corner of the room.
+end item
+end player inventory
+start room data
+start room
+dungeon
+start room items
+start item
+10
+food
+The food is slightly moldy.  It smells awful.  You would not normally want to eat this food, but if you were desperately hungry you might make an exception.
+0
+0
+0
+
+
+You notice food lieing on a tray.
+end item
+start item
+11
+dungeon window
+There are bars covering the dungeon window.  You can't see much beyond the castle walls, but off in the distance you can make out some trees.  If you were to escape to the forest, you may have hope of getting away.
+0
+0
+0
+
+
+There is a dungeon window.
+end item
+start item
+40
+sleeping guard
+The guard is sound asleep.  You notice some keys on his belt.  One of those keys appears to be the dungeon key.  Better not wake him up.
+0
+0
+0
+
+
+There is a sleeping guard sitting next to the cell door.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+3
+2
+You are in the dungeon.  It's musky in here.  You have a small straw matress on the floor.  It's extremely uncomfortable.  You've been here for a while.  It smells bad, partly due to the rats, and partly due to the mold growing on the ceiling.  How much more of this can you take?  On the East side of the cell is the cell door.  The other sides are stone walls.
+You are in the dungeon.  It's musky in here.  You feel trapped.  To the east of the cell you have a door.  The other sides are stone walls.
+You are in the dungeon.  The dungeon is open.  You've been out of here before.  Did you forget something here or is there another reason you've come back?
+5
+1
+1
+cell door
+none
+If the cell door is locked, maybe there is a way you could open it.
+end room
+start room
+basement
+start room items
+start item
+1
+castle map
+It's a map of the castle.  From here you should try going to the
+40
+1
+1
+From here you should try going to the
+You are in the throne room.  You wouldn't want to go any further than this
+The castle map is folded on the ground.
+end item
+start item
+3
+rope
+It appears this rope could help you climb out of a window.
+3
+1
+1
+That was smart.  Now you can climb out of the window. 
+
+A rope is coiled next to the wall.
+end item
+start item
+12
+dragon tales encyclopedia
+This book chronicles all the adventures of the great knights who have battled dragons.  There are hundreds of pages.  It seems very interesting, but you probably shouldn't stay here too long reading it.
+1
+0
+1
+
+
+The dragon tales encyclopedia lies next to the wall.
+end item
+start item
+13
+rat
+The rat seems preoccupied by his cheese in the corner.  You see a hole off in the distance.  It appears he came from there.  After living in the dungeon for so long you have grown accustomed to rats and don't bother them unless they are going for your food.
+1
+0
+1
+
+
+A rat scurries to the corner of the room.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+4
+2
+You are in the basement.  There is a stale smell in here.  To the west is the cell door to the dungeon that you just came from.  It looks like there is a wooden door to the South but it is hard to see because it is so dark.  It would be much easier to get through this room with light. 
+You are in the basement.  It's too dark to do anything in here.  Maybe if you could see you could get to the wooden door to the South.  The cell door to the dungeon is to the West.
+You are in the basement.  It is cold and muggy but you know your way through because you've been through here before.  Did you miss something?   To the West there is the cell door that leads to the dungeon and to the South there is the wooden door that leads to the Guard Room.
+2
+3
+1
+wooden door
+cell door
+It's very dark in the basement.  You might be better able to move forward if you could see.
+end room
+start room
+guard room
+start room items
+start item
+14
+guard duty roster
+This roster contains a list of all the guards in the castle.  It appears that there are normally guards stationed all throughout the castle.  It appears that today there are guards listed in the dungeon, the cellar,  and solar room, the kitchen, the pantry, the treasure room, the chapel, and the great hall.
+2
+1
+2
+The guard duty roster conveniently has the guards schedules on it.  You notice that there are guards on duty in the Cellar, Solar Room, Pantry, Treasure Room, and Great Hall.  Getting past them may not be easy. 
+
+You notice a guard duty roster laying on the ground.
+end item
+start item
+15
+suit of armor
+The armor is new and shiny.  There is a whole suit here: breastplate, leg covers, and helmet.  Unfortunately the armor is too small and you cannot fit into it.
+2
+0
+2
+
+
+A suit of armor shimmers in the light.
+end item
+start item
+49
+fly
+The fly flies by your ear and you swat at it but are too slow.
+2
+0
+2
+
+
+A fly buzzes around the room.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+3
+0
+You are in the guard room.  This is where the guards keep their gear.  There are random pieces of armor laying around.  It is somewhat messy in here.  It seems that they use this room more for storage than anything else.  Luckily you haven't seen any guards since you were in the dungeon, however you may want to be cautious going forward.  This room is pretty large.  You notice a large door to the West.  The wooden door that leads back to the basement is to the North.
+You are in the guard room.  There is a large door to the West and a wooden door to the North.  The wooden door to the North leads back to the basement.  Hopefully no guards come back here anytime soon.
+You are in the guard room.  You've been through here before.  The large door to the West leads to the dovecote.  The wooden door to the North leads back to the basement.
+0
+2
+1
+large door
+wooden door
+There are guards all throughout the castle.  You might feel better about moving forward if you knew where they were at.
+end room
+start room
+dovecote
+start room items
+start item
+16
+pigeons
+The pigeons smell awful.  They flapping their wings at you.  You can't help but be grossed out by the smell.  
+3
+0
+3
+
+
+There are pigeons everywhere.
+end item
+start item
+17
+parcel
+The small parcel is the type that can be tied to pigeons to send messages.  Unfortunately you have nobody to send a message to, so this parcel wouldn't do you much good.
+3
+0
+3
+
+
+You notice a small parcel next to the pigeons cage.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+2
+0
+You are in the dovecote.  There are pigeons everywhere!  This must be where the messages are sent to the other castles from.  How did they train all of these pigeons?  They seem to be unruly and restless.  The room is somewhat small, but you notice a window to the North.  The window is pretty high up but there is a hook next to the window.  It would be a long fall.  Below the window is the Place of Arms.  There are no other doors other than the one facing East that you came from.
+You are in the dovecote.  There are pigeons everywhere!  The large door to the East leads back to the Guard Room.  There is a window to the North.  It is too high to jump from but you do notice a hook next to the window.  Down below you see the Place of Arms.
+You are in the dovecote.  You've been out of here before.  You climbed down the North facing window.  To the East is large door leading to the guard room.
+1
+0
+0
+window
+large door
+The window is too high to jump from, but maybe there is something that you could tie to the window to climb down. 
+end room
+start room
+place of arms
+start room items
+start item
+4
+sword
+This sword could be used to defeat a guard
+50
+1
+4
+You took out the guard!!  Your adrenaline is pumping.  Your swordsmanship is top notch.
+
+There is a sword lieing against the wall.
+end item
+start item
+5
+bow and arrow
+This bow and arrow could be used to defeat a guard.
+60
+1
+4
+Your arrow pierces the guards heart, and he collapses to the ground.  The coast is clear, for now....
+You took the king out!!  You can now claim your seat on the throne.  Congratulations, you have escaped the dungeon and are now ruler of the seven kingdoms.
+A bow and arrow lie next to one another.
+end item
+start item
+18
+shield
+The shield is leaning up against the wall.  It has a coat of arms on it, but you can't make out what family it comes from.  You have always been a great swordsmen, but shields usually slow you down in combat.
+4
+0
+4
+
+
+There is a large shield leaned up against the wall.
+end item
+start item
+19
+spear
+The spear is long and sharp.  It could do some damage in the right hands.  You were never one for spears though.  You always preferred a sword or a bow.
+4
+0
+4
+
+
+There is a spear that is almost as tall as the ceiling.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+4
+0
+You are in the place of arms.  It's dark in here.  You can somewhat make out what is in the room, but without light you may be missing some stuff.  There are weapons everywhere.  Luckily there are no guards here.  You can't help but wonder what it would be like to be in combat again.  It has been years since you've wielded a sword.  Luckily, combat is like riding a bike, and you feel confident in your abilities.  To the South you see the window that you climbed out of with the rope still hanging down.  To the East you a staircase.  Where could it lead?
+You are in the place of arms.  It's dark in here.  You can somewhat make out what is in the room, but without light you may be missing some stuff.  There are weapons everywhere.  To the South you see the window that you climbed out of leading to the Dovecote room.  To the East there is a staircase.   
+You are in the place of arms.  You've been through here before.  To the South you see the window to the dovecote.  To the East you see the staircase leading to the Cellar.
+3
+1
+1
+staircase
+window
+It is very dark in here.  You might have an easier time moving forward if you could see better.
+end room
+start room
+cellar
+start room items
+start item
+6
+treasure sack
+Inside the treasure sack there are diamonds and rubies.  There is one gold coin.  You don't want to leave this behind.
+11
+1
+5
+Luckily this guard was open to bribes.  You can now pass freely.  
+
+There is a treasure sack on the ground and it appears to be full.
+end item
+start item
+7
+mead
+Ever heard of liquid courage?  I bet drinking this mead would make the fall from a window a little easier.
+7
+1
+5
+You are feeling tipsy....Now jumping out of the window doesn't seem like such a bad idea.
+
+There is a container full of mead.
+end item
+start item
+20
+barrel
+It appears that the barrel is full of wine.  There doesn't seem to be an easy way to open it though.  Probably better not to waste too much time trying to get in, you need to get out of the castle before you get caught.
+5
+0
+5
+
+
+There is a barrel in the corner of the room.
+end item
+start item
+21
+spider
+The spider's web has gotten very large, and you notice several insects trapped in it.  You also notice a red spot on the spiders belly.  Better to stay away from it.
+5
+0
+5
+
+
+You notice a spider in the corner of the cellar.
+end item
+start item
+41
+guard
+The guards take turns patrolling the castle.  You won't be able to sneak past him.  Your best bet may be close quarters combat.
+5
+0
+5
+
+
+A guard is on duty.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+5
+0
+You are in the cellar.  It is dank in here.  You can see, but not well.  It seems that this room is used for storage.  There are random bits of food and containers laying around.  To the West is the staircase to the Place of Arms.  You notice another large door to the East.
+You are in the cellar.  It is dank and dark down here.  You see the door to the staircase to the place of arms to the West.  To the East you see another large door.
+You are in the cellar.  You've been through here before.  You see the staircase to the place of arms to the West and the large door to the solar room to the East.
+2
+1
+1
+large door
+staircase
+If there was a guard in your way, how could you get past him?
+end room
+start room
+solar room
+start room items
+start item
+22
+bed
+The bed looks incredibly comfortable after spending so much time sleeping in the dungeon.  It is tempting to lay down for a nap, but if you do you will likely get caught.  Better not to risk it.
+6
+0
+6
+
+
+There is a bed in the center of the room.
+end item
+start item
+23
+trophy
+The trophy is from a hunt.  It is the head of an elk.  The antlers are huge.  A skilled hunter must have taken this elk down.
+6
+0
+6
+
+
+On the wall you notice a trophy.
+end item
+start item
+42
+guard
+The guards take turns patrolling the castle.  You won't be able to sneak past him.  Your best bet may be close quarters combat.
+6
+0
+6
+
+
+A guard is on duty.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+3
+0
+You are now in the solar room.  You can tell this place is fancy, which means royalty must stay here. You notice beautiful arches on the ceiling and large windows all around.  There is a fireplace and a table with chairs. To the West is the large door leading to the cellar. You notice another small door to the North.
+You are in the solar room.  It is a fancy room, royalty spends a lot of time here.  You notice windows all around.  There is a large door to the West leading to the cellar, and a small door to the North that leads somewhere new.
+You are in the solar room.  You have been here before.  To the West is the large door to the cellar and to the North is the small door to the lavatory.
+2
+0
+1
+small door
+large door
+If there was a guard in your way, how could you get past him?
+end room
+start room
+lavatory
+start room items
+start item
+24
+toilet
+In the toilet there is no running water and it smells rather awful.  If you don't have to go to the bathroom, you woulnd't want to be near the toilet.
+7
+0
+7
+
+
+There is a toilet against the wall.
+end item
+start item
+25
+crack in the wall
+You peer through the crack in the wall.  On the otherside of the wall you can see people walking through a hallway, but you can't tell how to get there.
+7
+0
+7
+
+
+There is a crack in the wall.
+end item
+start item
+26
+ways of knighthood book
+This book describes the code that knights must abide by.  The way of the knight is an honorable way of life.  The combat techniques chapter seems interesting, but you don't have time to sit around and read it.
+7
+0
+7
+
+
+The ways of knighthood book is open and lying on the floor.
+end item
+start item
+39
+window
+This window is pretty tall.  You could jump but it might hurt.
+7
+0
+7
+
+
+There is a window carved into the wall to the North.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+4
+0
+You are in the lavatory.  There are stone walls all around.  You came through the small door to the South, and you notice a small window to the North.  The smell in here is overpowering, although you can't help but think that it must be nice to have a bathroom outside of your sleeping quarters.  There is another small window at the top of the room.  You can't see out of it, but it must be to help ventilate the room.
+You are in the lavatory.  It smells awful in here.  This lavatory has doors in two directions, one to the North and one to the South.  The small door to the South leads back to the solar room.  The small door to the north seems like the best way out of here.
+You are in the lavatory.  You have been here before.  To the south you notice the small door to the Solar Room.  To the North you see the small door to the kitchen.
+3
+0
+1
+small door
+window
+The window looks a little high too jump, if only you had a little more courage...
+end room
+start room
+kitchen
+start room items
+start item
+27
+cook book
+This book contains a recipe for elk stew.  After eating dungeon rations for the past several years this recipe sounds delicious.  Unfortunately you don't have time to sit around and read it, otherwise you might be able to make it someday.
+8
+0
+8
+
+
+You notice a cook book.
+end item
+start item
+28
+fruit basket
+There are flys all over the fruit and it appears to be rotten.  This may have been good weeks ago, but it is not good now.  You don't want to go near it.
+8
+0
+8
+
+
+There is a fruit basket that is half empty.
+end item
+start item
+43
+guard
+The guards take turns patrolling the castle.  You won't be able to sneak past him.  It may be tough to corner him without making a ruckus, but you might be able to take him out from range.
+8
+0
+8
+
+
+A guard is on duty.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+3
+0
+You are in the kitchen.  To the South you notice the window door to the lavatory that you just came through.  There is another old door to the West.  There are pots and pans everywhere, and getting into a skirmish with the guard may cause a ruckus, which could draw unneeded attention.  The food in here smells good, but now is not the time to eat.  
+You are in the kitchen.  To the South you notice the window to the lavatory that you just came through.  There is another old door to the West.  
+You are in the kitchen.  You have been here before.  To the South you see the window to the lavatory.  To the West you notice the old door to the pantry.
+3
+2
+1
+old door
+window
+Maybe there is a way you can defeat the guard without getting too close...
+end room
+start room
+pantry
+start room items
+start item
+29
+main door
+The door is locked and there are no keys in sight.  You start to get a little nervous, because there don't appear to be other ways out of here.
+9
+0
+9
+
+
+The main door has a large lock on it.
+end item
+start item
+30
+flour
+You look a little closer and notice a loose floorboard under the bags of flour.  Beneath the floorboard there is a tunnel.
+9
+0
+9
+
+
+You notice a pile of large bags.  These bags appear to contain flour.
+end item
+start item
+44
+guard
+The guards take turns patrolling the castle.  You won't be able to sneak past him.  You can't get a good vantage point, but he appears to be small.  You may be able to overpower him in close combat.
+9
+0
+9
+
+
+A guard is on duty.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+3
+0
+You are in the pantry.  There is a large door in the corner of the room but it is locked.  There is a old door behind you to the East, but that only leads back to the Kitchen.  There is a lot of food stored in here.  You notice some mice crawling around.  There are many loafs of bread on the shelves.  There is some meet being dried in the corner.  It looks appetizing until you notice a roach crawl out from under one of the pieces.  After spending so much time locked up it would be nice to have food like this, but you'd probably rather escape the castle than have a good meal. 
+You are in the pantry.  There is a large door in the corner of the room but it is locked.  There is a old door behind you to the East, but that only leads back to the Kitchen.  There is a lot of food stored in here.  You notice some mice crawling around.  There are many loafs of bread on the shelves.  There is some meet being dried in the corner.  It looks appetizing until you notice a roach crawl out from under one of the pieces. 
+You are in the Pantry.  You have been here before.  To the East you notice the old door that leads back to the Kitchen.  In the North corner of the room you see the tunnel that you uncovered.
+1
+0
+0
+old door
+tunnel
+There is a guard in your way, how can you defeat him?
+end room
+start room
+treasure room
+start room items
+start item
+31
+gold cup
+The cup is shimmering in the light.  It would be an honor to enjoy a glass of wine out of such a fancy cup.  Unforunately, you don't have time for such luxuries.
+10
+0
+10
+
+
+There is a gold cup.  It appears to be very expensive.
+end item
+start item
+32
+treasure chest
+The chest is locked.  You try to pick it up but it is way too heavy to lift.  If you could take this chest you would be very rich.  Unforunately, it is too heavy to carry.
+10
+0
+10
+
+
+There is a treasure chest in the middle of the room.
+end item
+start item
+45
+guard
+The guards take turns patrolling the castle.  You won't be able to sneak past him.  Sneaking up on him may not be an option either, although you have a good view of him from where you are standing.  He isn't looking your way, and isn't wearing armor...
+10
+0
+10
+
+
+A guard is on duty.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+3
+0
+You are in the treasure room.  There is treasure everywhere.  To the South is the tunnel leading back to the pantry.  To the West is a vaulted door.  There are diamonds and rubies all over the floor.  There are gold amulets hanging on the walls.  You get the feeling that not a lot of people come into this room.
+You are in the treasure room.  There is treasure everywhere.  To the South is the tunnel leading back to the pantry.  To the West is a vaulted door.
+You are in the treasure room. You have been here before.  To the South is the tunnel leading back to the pantry.  To the West is the vaulted door leading back to the chapel.
+3
+2
+1
+vaulted door
+tunnel
+If there is a guard in your way maybe there is something you can do to get by him.
+end room
+start room
+chapel
+start room items
+start item
+33
+holy book
+This book contains many prayers.  It contains stories of the great heroes of your time.  This book has been around for many hundred years and appears fragile.  You are a religious man and don't want to ruin to the book, so you don't mess with it.
+11
+0
+11
+
+
+There is a holy book that lies open on the table.
+end item
+start item
+34
+priest robes
+The robes are black and white.  You can tell that they haven't been washed recently, because they carry a foul odor.  They are too small for you to fit into.
+11
+0
+11
+
+
+There are priest robes hanging against the wall.
+end item
+start item
+46
+guard
+The guards take turns patrolling the castle.  You won't be able to sneak past him.  It may be risky to get into a fight with him, as he could yell and more guards may come.  Guards don't get paid a lot though, so maybe you could disarm him another way.
+11
+0
+11
+
+
+A guard is on duty.  
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+3
+0
+You have entered the chapel.  There are paintings covering the walls.  You see books laid throughout the chapel.  There is a fountain that contains holy water.  To the east is the vaulted door back to the treasure room.  To the North you notice a gilded door.  It has been many years since you have visited a chapel.  You used to be a religious man, but prisoners are prevented from attending religious services.
+You have entered the chapel.  There are paintings covering the walls.  You see books laid throughout the chapel.  There is a fountain that contains holy water.  To the east is the vaulted door back to the treasure room.  To the North you notice a gilded door.
+You are in the chapel. You have been here before.  There is a vaulted door to the East leading to the treasure room.  There is a gilded door to the North leading to the master bed chamber.
+1
+0
+1
+gilded door
+vaulted door
+It has seemed wise to use combat against some guards, but maybe there is another way around this guard.
+end room
+start room
+master bed chamber
+start room items
+start item
+35
+bed
+This is the nicest bed you have ever seen.  It is the type of bed that only a member of the royal family would be able to afford.  You wish you could lay down in it, but you don't have time.
+12
+0
+12
+
+
+There is a bed that takes up most of the room.
+end item
+start item
+36
+rotten food
+The food must have been sitting there for a few days.  Whoever stays in this room must have been gone for more than a day.
+12
+0
+12
+
+
+You notice some rotten food on the nightstand. 
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+2
+0
+You are in the master bed chamber.  This is where the king sleeps.It's dark in here.  You can somewhat make out what is in the room, but without light you may be missing some stuff.  The bed is huge.  Now you understand why they call large beds "King Size".  There are curtains all around the bed.  There are some windows and the sun is peering in.  There is a table in the corner.  There is a fireplace, but no fire going right now.  To the South is the gilded door leading back to the chapel room.  You notice a double door to the West.
+You are in the master bed chamber.  This is where the king sleeps.  It's dark in here.  You can somewhat make out what is in the room, but without light you may be missing some stuff.  To the South is the gilded door leading back to the chapel room.  You notice a double door to the West.
+You are in the master bed chamber.  You have been here before.  To the South is the gilded door leading back to the chapel room.  To the West is a double door leading to the great hall.
+3
+2
+1
+double door
+gilded door
+It would be easier to find your way around this room if you could see.
+end room
+start room
+great hall
+start room items
+start item
+37
+table
+This table is large and has royal tones.  This must be where the king sits and eats.
+13
+0
+13
+
+
+You notice a table facing the opposite direction as the other table.
+end item
+start item
+38
+chair
+This chair is fit only for a king.  He must sit here to eat dinner.  You sit down for a split second, and it feels very comfortable.  Unfortunately you can't stay here too long.
+13
+0
+13
+
+
+There is a chair pulled up to the table.
+end item
+start item
+47
+guard
+This guard is particularly big.  I wouldn't get too close to him.  Maybe you can take him out from distance.
+13
+0
+13
+
+
+A guard is on duty.  
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+3
+0
+You are in the great hall.  This is where the King and all of the Lords come to feast. There is a long table surrounded on both sides by chairs.  The table is set in preparation for the next meal.  There are hunting trophies hung on all of the walls and tapestries draped from the ceilings.  There are candles everywhere but none of them are lit right now.  To the East is the double door leading back to the master bed chamber.  To the North you notice a royal door.
+You are in the great hall.  This is where the King and all of the Lords come to feast.  To the East is the double door leading back to the master bed chamber.  To the North you notice a royal door.
+You are in the great hall.  To the East is the double door leading back to the master bed chamber.  To the North you notice a royal door that leads to the throne room.
+1
+0
+1
+royal door
+double door
+Getting too close to the guard doesn't seem wise.  Maybe there is another way around him.
+end room
+start room
+throne room
+start room items
+start item
+8
+strange noise
+You hear a strange noise beyond the back door.  It appears that the guards have left the king alone and are congregating in the next room.
+14
+0
+14
+
+
+A strange noise catches your attention.
+end item
+start item
+9
+throne
+You see a throne.  The king is on the throne.  He doesn't appear to notice you.
+14
+0
+14
+
+
+A throne dominates the room.
+end item
+start item
+48
+king
+The King is sitting on the throne.  There are no guards arond.  He doens't seem to notice you.  This may be your chance for revenge, but you must be careful, if he yells, the guards may come.
+14
+0
+14
+
+
+You can't help but notice the king sitting all alone on his throne.
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+start item
+0
+
+
+0
+0
+0
+
+
+
+end item
+end room items
+3
+0
+You are in the throne room.  This is where the King spends most of his day.  It is decorated on all sides with the King's family crest.  There are swords hanging from the walls.  There are seats along the sides of the room where the King's advisors sit when giving him council.  It smells of incense in here.  To the South there is a royal door, the only door in this room.
+You are in the throne room.  This is where the King spends most of his day. To the South there is a royal door, the only door in this room.
+Congratulations.  You have overthrown the King.  You are now free to leave the castle.
+3
+5
+0
+none
+royal door
+How can you take out the king without getting too close?
+end room
+end room data

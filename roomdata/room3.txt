@@ -1,7 +1,7 @@
 dovecote
-There are pigeons everywhere!  This must be where the messages are sent to the other castles from.  How did they train all of these pigeons?  They seem to be unruly and restless.  The room is somewhat small, but you notice a window to the North.  The window is pretty high up.  It would be a long fall.  Below the window is the Place of Arms.  There are no other doors other than the one facing East that you came from.
-There are pigeons everywhere!  The large door to the East leads back to the Guard Room.  There is a window to the North.  It is too high to jump from.  Down below you see the Place of Arms.
-You've been out of here before.  You climbed down the North facing window.  To the East is large door leading to the guard room.
+You are in the dovecote.  There are pigeons everywhere!  This must be where the messages are sent to the other castles from.  How did they train all of these pigeons?  They seem to be unruly and restless.  The room is somewhat small, but you notice a window to the North.  The window is pretty high up but there is a hook next to the window.  It would be a long fall.  Below the window is the Place of Arms.  There are no other doors other than the one facing East that you came from.
+You are in the dovecote.  There are pigeons everywhere!  The large door to the East leads back to the Guard Room.  There is a window to the North.  It is too high to jump from but you do notice a hook next to the window.  Down below you see the Place of Arms.
+You are in the dovecote.  You've been out of here before.  You climbed down the North facing window.  To the East is large door leading to the guard room.
 1
 0
 0

@@ -1,7 +1,7 @@
 kitchen
-You are in the kitchen.  To the South you notice the window door to the lavaratory that you just came through.  There is another old door to the West.  There are pots and pans everywhere, and getting into a skirmish with the guard may cause a ruckus, which could draw unneeded attention.  The food in here smells good, but now is not the time to eat.  
-You are in the kitchen.  To the South you notice the window to the lavaratory that you just came through.  There is another old door to the West.  
-You are in the kitchen.  You have been here before.  To the South you see the window to the lavoratory.  To the West you notice the old door to the pantry.
+You are in the kitchen.  To the South you notice the window door to the lavatory that you just came through.  There is another old door to the West.  There are pots and pans everywhere, and getting into a skirmish with the guard may cause a ruckus, which could draw unneeded attention.  The food in here smells good, but now is not the time to eat.  
+You are in the kitchen.  To the South you notice the window to the lavatory that you just came through.  There is another old door to the West.  
+You are in the kitchen.  You have been here before.  To the South you see the window to the lavatory.  To the West you notice the old door to the pantry.
 3
 2
 1

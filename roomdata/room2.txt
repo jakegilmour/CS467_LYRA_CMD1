@@ -1,7 +1,7 @@
 guard room
-This is where the guards keep their gear.  There are random pieces of armor laying around.  It is somewhat messy in here.  It seems that they use this room more for storage than anything else.  Luckily you haven't seen any guards since you were in the dungeon, however you may want to be cautious going forward.  This room is pretty large.  You notice a large door to the West.  The wooden door that leads back to the basement is to the North.
-There is a large door to the West and a wooden door to the North.  The door to the North leads back to the basement.  Hopefully no guards come back here anytime soon.
-You've been through here before.  The door to the West leads to the dovecote.  The door to the North leads back to the basement.
+You are in the guard room.  This is where the guards keep their gear.  There are random pieces of armor laying around.  It is somewhat messy in here.  It seems that they use this room more for storage than anything else.  Luckily you haven't seen any guards since you were in the dungeon, however you may want to be cautious going forward.  This room is pretty large.  You notice a large door to the West.  The wooden door that leads back to the basement is to the North.
+You are in the guard room.  There is a large door to the West and a wooden door to the North.  The wooden door to the North leads back to the basement.  Hopefully no guards come back here anytime soon.
+You are in the guard room.  You've been through here before.  The large door to the West leads to the dovecote.  The wooden door to the North leads back to the basement.
 0
 2
 1

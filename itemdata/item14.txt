@@ -6,7 +6,7 @@ This roster contains a list of all the guards in the castle.  It appears that th
 2
 The guard duty roster conveniently has the guards schedules on it.  You notice that there are guards on duty in the Cellar, Solar Room, Pantry, Treasure Room, and Great Hall.  Getting past them may not be easy. 
 
-You notice a guard duty roster lieing on the ground.
+You notice a guard duty roster laying on the ground.
 
 
 
