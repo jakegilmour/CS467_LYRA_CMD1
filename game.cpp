@@ -11,9 +11,7 @@
 #include <sys/stat.h>
 #include "save_game.hpp"
 #include <unistd.h>
-#include <sstream>
-#include <boost/algorithm/string.hpp>
-#include <time.h>
+
 
 
 #define NUMROOMS 15
@@ -53,7 +51,7 @@ int main()
 	
 	
 	do{
-		cout << "Welcome to Castle Escape!" << endl;
+		cout << endl << "Welcome to Castle Escape!" << endl << endl;
 		cout << "Enter 1 to start a new game" << endl;
 		cout << "Enter 2 to load a saved game" << endl;
 		
@@ -994,7 +992,28 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 		}
 		else if (commands[0] == "help")
 		{
-			cout << "help commands" << endl;
+			cout << endl << "*****Game Commands*****" << endl;
+			cout << "The following commands can be used to ineract with the game:" << endl;
+			cout << "north/south/east/west - go that direction" << endl;
+			cout << "take ITEMNAME - add item to your inventory" << endl;
+			cout << "use ITEMNAME - use an item from your inventory (if you want to be boring.  If not, get creative!)" << endl;
+			cout << "look - print longform room description" << endl;
+			cout << "look at / inspect ITEMNAME - examine an item or feature in a room or your inventory" << endl;
+			cout << "savegame" << endl;
+			cout << "loadgame" << endl;
+			cout << "hint - get a hint for the room that you're in" << endl;
+			cout << "inventory - list the contents of your inventory" << endl;
+			cout << "go LOCATION - go towards the specified direction, door, or room" << endl;
+			cout << "Additional verbs (used with items) : read, drink, jump, climb, tie, unlock, shine, stab, swing, shoot" << endl;
+			
+			string msg = "These are the basic commands.  If you want to have more fun try to get creative.  You might want to shine a lamp or swing a sword at a guard you get the drift.";
+			
+			
+			struct winsize w;
+			ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+			msg = formatText(msg, w.ws_col);
+			
+			cout << endl << msg << endl << endl;
 
 		}
 		else if (commands[0] == "savegame")
@@ -1130,7 +1149,7 @@ void importItemData(vector <struct room> &rooms)
 			ifstream inFile;
 			inFile.open(itemFileName);
 			int lineCounter = 1;
-			stringstream ss;
+			
 			
 			struct item newItem;
 			

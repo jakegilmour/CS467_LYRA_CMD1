@@ -5,6 +5,6 @@ You are in the Pantry.  You have been here before.  To the East you notice the o
 1
 0
 0
-old door
 tunnel
+old door
 There is a guard in your way, how can you defeat him?
