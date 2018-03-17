@@ -247,6 +247,7 @@ void load_game(int &currentRoomNum, struct inventory &playerInventory, vector <s
     int struct_room_counter = 0;
     item temp_item;
     room temp_room;
+    int i;
     
     // open and write content to file
     afile.open("./saved_games/" + fname);
@@ -269,6 +270,9 @@ void load_game(int &currentRoomNum, struct inventory &playerInventory, vector <s
         }
         afile.close();
     }
+    
+    // ensure rooms is empty before filling content
+    rooms.clear();
     
     // assign game state variables using mydata
     currentRoomNum = std::stoi(mydata[1]);
