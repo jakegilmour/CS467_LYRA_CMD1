@@ -1,10 +1,10 @@
 lavatory
-You are in the lavatory.  There are stone walls all around.  You came through the small door to the South, and you notice a small window to the North.  The smell in here is overpowering, although you can't help but think that it must be nice to have a bathroom outside of your sleeping quarters.  There is another small window at the top of the room.  You can't see out of it, but it must be to help ventilate the room.
-You are in the lavatory.  It smells awful in here.  This lavatory has doors in two directions, one to the North and one to the South.  The small door to the South leads back to the solar room.  The small door to the north seems like the best way out of here.
+You are in the lavatory.  There are stone walls all around.  You came through the small door to the South. The smell in here is overpowering, although you can't help but think that it must be nice to have a bathroom outside of your sleeping quarters.  There is another small window at the top of the room.  You can't see out of it, but it must be to help ventilate the room.
+You are in the lavatory.  It smells awful in here.  The small door to the South leads back to the solar room. 
 You are in the lavatory.  You have been here before.  To the south you notice the small door to the Solar Room.  To the North you see the small door to the kitchen.
 3
 0
 1
-small door
 window
+small door
 The window looks a little high too jump, if only you had a little more courage...

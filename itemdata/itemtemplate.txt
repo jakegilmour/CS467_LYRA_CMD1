@@ -5,6 +5,8 @@ int cantakeornot
 int roomnum
 string usetext1
 string usetext2
+string room description
+
 (make sure there is at least one empty line at end of file)
 
 
@@ -33,5 +35,5 @@ guards
 
 take dungeon key bug
 
-add use, shine to verbs
 
+add an item to the guard room

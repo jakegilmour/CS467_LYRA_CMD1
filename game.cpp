@@ -1107,6 +1107,11 @@ void playGame(vector <struct room> &rooms, struct inventory &playerInventory, in
 			useItem(commands[1], playerInventory, rooms, currentRoomNum);
 					
 		}
+		else if (commands[0] == "bribe guard" && commands[1] == "treasure sack")
+		{
+			useItem(commands[1], playerInventory, rooms, currentRoomNum);
+					
+		}
 		else if (commands[0] == "unlock" && commands[1] == "lock" || commands[1] == "door" || commands[1] == "cell door")
 		{
 			useItem("dungeon key", playerInventory, rooms, currentRoomNum);
